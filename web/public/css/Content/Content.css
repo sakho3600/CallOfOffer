@@ -56,3 +56,7 @@ tr:nth-child(even) {
 td a {
     color: green;
 }
+
+h4 {
+    text-transform: lowercase;
+}

@@ -77,8 +77,9 @@ class TestController extends Controller
         $serviceQueries = $this->get('corebundle.servicesqlqueries');
 
         $test = $serviceQueries->truncate('call_of_offer');
-        $test = $serviceQueries->truncate('consult_and_offer');
+        $test = $serviceQueries->truncate('proposition');
         $test = $serviceQueries->truncate('provider');
+        $test = $serviceQueries->truncate('user');
         return new Response("Réinitialisation des tables : ok!");
 
     }

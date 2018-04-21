@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="CallOfOffer@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="callofoffer">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bd_skipper"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="musculatotor"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="stage"/>
+    <schema id="9" parent="1" name="suaps"/>
+    <schema id="10" parent="1" name="sys"/>
+    <schema id="11" parent="1" name="viwaboard"/>
+    <schema id="12" parent="1" name="wordpress"/>
+    <schema id="13" parent="1" name="zoo"/>
+  </database-model>
+</dataSource>

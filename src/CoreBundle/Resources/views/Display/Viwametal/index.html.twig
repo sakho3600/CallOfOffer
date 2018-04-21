@@ -6,8 +6,10 @@
     {% include "@Core/Menu/Viwametal/UserMenu.html.twig" %}
 {% endblock %}
 {% block mainContent %}
+    {% block listCoo %} {%  endblock %}
     {% block newOffer %}{% endblock %}
-    {% include "@Core/Listing/Viwametal/CallOfOfferViwa.html.twig" %}
+    {% block propositions %}{% endblock %}
+
 {% endblock %}
 {% block scriptjs %}
     <script src="{{ asset('public/script/provider/callOfOffer.js') }}"></script>

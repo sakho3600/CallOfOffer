@@ -37,10 +37,15 @@ vm_user_coo_delete:
     defaults:
         _controller: CoreBundle:Viwametal:delete
 
-vm_user_coo_response:
+vm_user_coo_see:
     path:   /vmuser/coo/response
     defaults:
-        _controller: CoreBundle:Viwametal:response
+        _controller: CoreBundle:Viwametal:see
+
+vm_user_coo_validate:
+    path:   /vmuser/coo/response
+    defaults:
+        _controller: CoreBundle:Viwametal:validate
 
 provider_management:
     path:  /vmuser/provider/add

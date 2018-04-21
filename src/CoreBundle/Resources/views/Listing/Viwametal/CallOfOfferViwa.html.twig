@@ -38,6 +38,7 @@
                         </td>
                         <td>
                             <div class="btn-choice-tab">
+
                                 {% set isPresent = false %}
                                 {% if propositions is defined %}
                                     {% for prop in propositions %}
@@ -49,7 +50,7 @@
                                 {% if isPresent == true %}
                                     {% for prop in propositions %}
                                         {% if prop.callOfOffer.id == row.id %}
-                                            <a href="{{ path('vm_user_coo_response', {'id' : row.id }) }}">
+                                            <a href="{{ path('vm_user_coo_see', {'id' : row.id , 'tag' : row.tag }) }}">
                                                 <button name="del" class="btnResponse btn-sm btn-success" type="submit">
                                                     Répondre
                                                 </button>

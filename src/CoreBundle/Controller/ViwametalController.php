@@ -6,7 +6,6 @@ use CoreBundle\Entity\CallOfOffer;
 use CoreBundle\Entity\Provider;
 use CoreBundle\Form\CallOfOfferType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,20 +13,30 @@ class ViwametalController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@Core/Display/Viwametal/index.html.twig',[
+        return $this->render('@Core/Display/Viwametal/CallOfOffer/CallOfOffer.html.twig',[
             'list' => $this->listCallsOfOffer(),
             'title' => "Appels d'offre",
             'propositions' => $this->listPropositions()
         ]);
     }
 
-    public function responseAction()
+    public function seeAction(Request $request)
     {
-        return $this->render('@Core/Display/Viwametal/index.html.twig',[
-            'list' => $this->listCallsOfOffer(),
-            'title' => "Appels d'offre",
-            'propositions' => $this->listPropositions()
+        $idProp = $request->get('id');
+        $tag = $request->get('tag');
+
+        return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig',[
+            'title' => $tag,
+            'propositions' => $this->listPropositions(),
+            'idProp' => $idProp
         ]);
+    }
+
+    public function validateAction(Request $request)
+    {
+        $idProp = $request->get('id');
+
+        return $this->redirectToRoute('vm_user_coo_see');
     }
 
     public function addAction(Request $request)

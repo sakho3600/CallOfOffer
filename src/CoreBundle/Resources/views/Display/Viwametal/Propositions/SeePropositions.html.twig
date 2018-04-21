@@ -1,0 +1,76 @@
+{% extends "@Core/Display/Viwametal/index.html.twig" %}
+ {% block propositions %}
+     {% if propositions is defined %}
+
+         <div class="form_container">
+             <div class="table-responsive">
+
+                 <table id="table_viwa_user">
+                     <thead>
+                     <tr>
+                         <th>
+                             ID
+                         </th>
+                         <th>
+                             Fournisseur
+                         </th>
+                         <th>
+                             Appel d'offre
+                         </th>
+
+                         <th>
+                             Prix
+                         </th>
+                         <th>
+                             Commentaire
+                         </th>
+                         <th colspan="2">
+                             Emmission
+                         </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     {{ dump(propositions) }}
+                     {% for proposition in propositions %}
+
+                         {% if proposition.callOfOffer.id  == idProp %}
+                             <tr class="tr_viwa_user">
+                                 <td class="col_id">
+                                     {{ proposition.id }}
+                                 </td>
+                                 <td class="col_provider">
+                                     {{ proposition.provider.id }}
+                                 </td>
+                                 <td class="col_coo">
+                                     {{ proposition.callOfOffer.id }}
+                                 </td>
+                                 <td class="col_price">
+                                     {{ proposition.price }}
+                                 </td>
+                                 <td class="col_comment">
+                                     {{ proposition.comment }}
+                                 </td>
+                                 <td class="col_date">
+                                     {{ proposition.date }}
+                                 </td>
+                                 <td>
+                                     <div class="btn-choice-tab">
+                                         <a href="{{ path('vm_user_coo_validate', {'id' : proposition.id }) }}">
+                                             <button name="del" class="btnValidate btn-sm btn-danger" type="submit">
+                                                 Supprimer
+                                             </button>
+                                         </a>
+                                     </div>
+                                 </td>
+                             </tr>
+                         {% endif %}
+                     {% endfor %}
+
+
+                     </tbody>
+                 </table>
+
+             </div>
+         </div>
+     {% endif %}
+ {% endblock %}

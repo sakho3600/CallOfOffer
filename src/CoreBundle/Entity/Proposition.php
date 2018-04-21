@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +47,19 @@ class Proposition
      */
     private $comment;
 
+    /**
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new DateTime();
+    }
 
 
     /**
@@ -152,5 +166,29 @@ class Proposition
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Proposition
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
