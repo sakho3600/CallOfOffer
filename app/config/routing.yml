@@ -1,0 +1,14 @@
+provider:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+viwa_user_registration:
+    path:  /register/viwauser
+    defaults: { _controller: CoreBundle:Registration:viwaUserRegister }
+
+provider_registration:
+    path:  /register/provider
+    defaults: { _controller: CoreBundle:Registration:providerRegister }

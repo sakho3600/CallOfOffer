@@ -1,0 +1,23 @@
+<div id="mainMenu">
+    <div id="sidebar">
+        <div class="sidebarShadow">
+            <!-- Sidebar Links -->
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#userMenu" data-toggle="collapse" aria-expanded="false">Utilisateur Viwametal</a>
+                    <ul class="collapse list-unstyled" id="userMenu">
+                        <li><a href="{{ path('vm_user_index') }}">Voir appels d'offre</a></li>
+                        <li><a href="{{ path('vm_user_coo_add') }}">Nouvel appel d'offre</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <span>MENU</span>
+    </button>
+
+</div>

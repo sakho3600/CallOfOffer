@@ -1,0 +1,68 @@
+
+#provider
+provider_coo_index:
+    path:    /provider/index
+    defaults:
+        _controller: CoreBundle:Provider:index
+
+provider_coo_consult:
+    path:    /provider/consult
+    defaults:
+        _controller: CoreBundle:Provider:consult
+
+provider_offer_propose:
+    path:    /provider/offer/propose
+    defaults:
+        _controller: CoreBundle:Provider:propose
+
+provider_offer_delete:
+    path:    /provider/offer/delete
+    defaults:
+        _controller: CoreBundle:Provider:delete
+
+
+#Viwametal user
+vm_user_index:
+    path:    /vmuser/index
+    defaults:
+        _controller: CoreBundle:Viwametal:index
+
+vm_user_coo_add:
+    path:   /vmuser/coo/add
+    defaults:
+        _controller: CoreBundle:Viwametal:add
+
+vm_user_coo_delete:
+    path:   /vmuser/coo/delete
+    defaults:
+        _controller: CoreBundle:Viwametal:delete
+
+vm_user_coo_response:
+    path:   /vmuser/coo/response
+    defaults:
+        _controller: CoreBundle:Viwametal:response
+
+provider_management:
+    path:  /vmuser/provider/add
+    defaults:
+        _controller: CoreBundle:Viwametal:addProvider
+
+
+
+#Test Controller
+
+reinit_tables:
+    path: /reinit
+    defaults: { _controller: CoreBundle:Test:reinit}
+
+synchro_viwa_user:
+    path: /synchro1
+    defaults: { _controller: CoreBundle:Test:synchroViwaUser}
+
+synchro_provider1_user:
+    path: /synchro2
+    defaults: { _controller: CoreBundle:Test:synchroProvider1}
+
+synchro_provider2_user:
+    path: /synchro3
+    defaults: { _controller: CoreBundle:Test:synchroProvider2}

@@ -1,0 +1,10 @@
+services:
+    corebundle.servicesqlqueries:
+        class: CoreBundle\Service\ServiceSqlQueries
+        arguments:
+            - "@doctrine"
+
+
+    authentication.handler.login_success_handler:
+        class:  CoreBundle\Security\LoginSuccessHandler
+        arguments:  ['@router', '@security.authorization_checker']

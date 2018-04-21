@@ -1,0 +1,32 @@
+
+{% extends "@Core/Template.html.twig" %}
+
+
+
+{% block main %}
+    <div class="d-flex flex-column justify-content-center align-items-center">
+
+        <div id="userConnection" class="d-flex flex-column">
+            <div class="p-2 logo-margin">
+                <img src=" {{ asset("public/img/logo.png") }}">
+            </div>
+            {% if error %}
+            <div class="alert alert-danger">{{ error.message }}</div>
+            {% endif %}
+
+            <form id="form_login" action="{{ path('fos_user_security_check') }}" method="post" class="p-2">
+                <div class="input-margin">
+                    <input type="text" id="username connect_login" name="_username" value="{{ last_username }}" class="form-control" placeholder="Identifiant">
+                </div>
+                <div class="input-margin">
+                    <input type="password" id="password connect_password" name="_password" class="form-control" placeholder="Mots de passe">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

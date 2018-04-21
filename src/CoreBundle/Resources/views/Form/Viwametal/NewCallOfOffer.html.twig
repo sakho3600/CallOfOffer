@@ -1,0 +1,22 @@
+{% if form is defined %}
+
+    <div class="form_container">
+
+
+        {{ form_start(form) }}
+        <div class="form_listing">
+        {{ form_row(form.tag) }}
+        {{ form_row(form.quantity) }}
+
+        <div class="btn_container">
+
+                    <a href="{{ path('vm_user_coo_add') }}">
+                        <button id="btnAdd" name="add" class="btn btn-primary" type="submit">Ajouter
+                        </button>
+                    </a>
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endif %}

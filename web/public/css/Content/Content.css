@@ -1,0 +1,58 @@
+
+#content {
+    width: 100%;
+    padding: 20px 20px 70px 20px;
+    overflow-y: scroll;
+}
+
+/*Listing : affichage en tableau */
+table {
+    margin: 10px auto;
+    width: 100%;
+    min-width: 400px;
+    max-width: 700px;
+}
+
+th {
+    background-color: #5eb5e0;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f9a4;
+}
+
+tr:nth-child(even) {
+    background-color: #e9f09a;
+}
+
+.col_id {
+    min-width: 10%;
+}
+
+.col_tag {
+    min-width: 60%;
+}
+
+.col_quantity {
+    min-width: 10%;
+}
+
+.col_date {
+    min-width: 20%;
+}
+
+.btn-choice-tab {
+    display: flex;
+}
+
+.btnPropose, .btnRemoveProp, .btnResponse, .btnDelete {
+    width: 70px;
+}
+
+.containerBtnDelete {
+    text-align: right;
+}
+
+td a {
+    color: green;
+}

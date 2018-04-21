@@ -1,0 +1,65 @@
+
+.form_container {
+    padding: 15px;
+!important;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 80%;
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.title_container {
+    margin: 1px auto 10px auto;
+    text-align: center;
+}
+
+form label {
+    min-width: 50px;
+}
+
+form input[type='text'] {
+    max-width: 550px;
+!important;
+}
+
+form textarea {
+    max-width: 550px;
+!important;
+    height: 60px;
+}
+
+.btn_container {
+    text-align: center;
+    margin-top:15px;
+!important;
+}
+#corebundle_callofoffer_tag{
+    width: 300px;
+}
+#corebundle_sqlquery_bdd {
+    width: 200px;
+!important;
+}
+
+.form_listing {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    padding: 5px;
+}
+
+#form_comment {
+    width: 100%;
+
+}
+
+form label{
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+

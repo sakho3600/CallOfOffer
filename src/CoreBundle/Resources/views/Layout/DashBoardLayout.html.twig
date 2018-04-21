@@ -1,0 +1,22 @@
+{% extends "@Core/Template.html.twig" %}
+
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block main %}
+    <div class="wrapper" id="dashboard-content">
+        {% block wrapperMenu %}
+
+        {% endblock %}
+        <div id="content">
+            {% block title %}{% endblock %}
+            {% block mainContent %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scriptjs %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "@Core/Layout/ContentLayout.html.twig" %}
+{% block header %}
+    {% include "@Core/Menu/Viwametal/Header.html.twig" %}
+{% endblock %}
+{% block wrapperMenu %}
+    {% include "@Core/Menu/Viwametal/UserMenu.html.twig" %}
+{% endblock %}
+{% block mainContent %}
+    {% block newOffer %}{% endblock %}
+    {% include "@Core/Listing/Viwametal/CallOfOfferViwa.html.twig" %}
+{% endblock %}
+{% block scriptjs %}
+    <script src="{{ asset('public/script/provider/callOfOffer.js') }}"></script>
+{% endblock %}
+

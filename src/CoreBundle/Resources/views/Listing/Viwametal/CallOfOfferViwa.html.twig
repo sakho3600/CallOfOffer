@@ -1,0 +1,75 @@
+{% if list is defined %}
+    <div class="form_container">
+        <div class="table-responsive">
+
+            <table id="table_viwa_user">
+                <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Libellé
+                    </th>
+                    <th>
+                        Quantité
+                    </th>
+
+                    <th colspan="2">
+                        émis le
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for row in list %}
+                    <tr class="tr_viwa_user">
+                        <td class="col_id">
+                            {{ row.id }}
+                        </td>
+                        <td class="col_tag">
+                            {{ row.tag }}
+                        </td>
+                        <td class="col_quantity">
+                            {{ row.quantity }}
+                        </td>
+                        <td class="col_date">
+                            {{ row.date|date('d-m-Y à H:i') }}
+                        </td>
+                        <td>
+                            <div class="btn-choice-tab">
+                                {% set isPresent = false %}
+                                {% if propositions is defined %}
+                                    {% for prop in propositions %}
+                                        {% if prop.callOfOffer.id == row.id %}
+                                            {% set isPresent = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if isPresent == true %}
+                                    {% for prop in propositions %}
+                                        {% if prop.callOfOffer.id == row.id %}
+                                            <a href="{{ path('vm_user_coo_response', {'id' : row.id }) }}">
+                                                <button name="del" class="btnResponse btn-sm btn-success" type="submit">
+                                                    Répondre
+                                                </button>
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="{{ path('vm_user_coo_delete', {'id' : row.id }) }}">
+                                        <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
+                                            Supprimer
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endif %}
