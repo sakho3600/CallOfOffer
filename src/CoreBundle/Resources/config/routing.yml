@@ -47,6 +47,16 @@ vm_user_coo_validate:
     defaults:
         _controller: CoreBundle:Viwametal:validate
 
+vm_user_coo_accept:
+    path:   /vmuser/coo/accept
+    defaults:
+        _controller: CoreBundle:Viwametal:accept
+
+vm_user_coo_refuse:
+    path:   /vmuser/coo/refuse
+    defaults:
+        _controller: CoreBundle:Viwametal:refuse
+
 provider_management:
     path:  /vmuser/provider/add
     defaults:

@@ -8,6 +8,7 @@ use CoreBundle\Form\CallOfOfferType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ViwametalController extends Controller
 {
@@ -18,6 +19,16 @@ class ViwametalController extends Controller
             'title' => "Appels d'offre",
             'propositions' => $this->listPropositions()
         ]);
+    }
+
+    public function acceptAction(Request $request)
+    {
+        return new Response("accepter");
+    }
+
+    public function refuseAction(Request $request)
+    {
+        return new Response("refus");
     }
 
     public function seeAction(Request $request)

@@ -30,7 +30,7 @@
                      </tr>
                      </thead>
                      <tbody>
-                     {{ dump(propositions) }}
+                  
                      {% for proposition in propositions %}
 
                          {% if proposition.callOfOffer.id  == idProp %}
@@ -51,13 +51,19 @@
                                      {{ proposition.comment }}
                                  </td>
                                  <td class="col_date">
-                                     {{ proposition.date }}
+                                     {{ proposition.date |date('d-m-Y à H:i') }}
                                  </td>
                                  <td>
                                      <div class="btn-choice-tab">
-                                         <a href="{{ path('vm_user_coo_validate', {'id' : proposition.id }) }}">
-                                             <button name="del" class="btnValidate btn-sm btn-danger" type="submit">
-                                                 Supprimer
+                                         <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
+                                             <button name="del" class="btnAccept btn-sm btn-success" type="submit">
+                                                 Accepter
+                                             </button>
+                                         </a>
+                                         <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
+
+                                             <button name="del" class="btnRefuse btn-sm btn-danger" type="submit">
+                                                 Refuser
                                              </button>
                                          </a>
                                      </div>

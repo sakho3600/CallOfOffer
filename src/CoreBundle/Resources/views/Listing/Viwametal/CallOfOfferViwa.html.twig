@@ -48,15 +48,17 @@
                                     {% endfor %}
                                 {% endif %}
                                 {% if isPresent == true %}
+                                    {% set nbPresent = 0 %}
                                     {% for prop in propositions %}
                                         {% if prop.callOfOffer.id == row.id %}
-                                            <a href="{{ path('vm_user_coo_see', {'id' : row.id , 'tag' : row.tag }) }}">
-                                                <button name="del" class="btnResponse btn-sm btn-success" type="submit">
-                                                    Répondre
-                                                </button>
-                                            </a>
+                                            {% set nbPresent = nbPresent + 1 %}
                                         {% endif %}
                                     {% endfor %}
+                                    <a href="{{ path('vm_user_coo_see', {'id' : row.id , 'tag' : row.tag }) }}">
+                                        <button name="del" class="btnResponse btn-sm btn-success" type="submit">
+                                            Répondre ({{ nbPresent }})
+                                        </button>
+                                    </a>
                                 {% else %}
                                     <a href="{{ path('vm_user_coo_delete', {'id' : row.id }) }}">
                                         <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
