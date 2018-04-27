@@ -1,71 +1,48 @@
-<nav id="header" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="header" class="navbar navbar-expand-lg">
     <div id="navlogo-connected">
-        <a href="#" class="navbar-brand"><img class="logo-vw"
-                                              src=" {{ asset("public/img/logo.png") }}"></a>
+        <a href="{{ path('provider_coo_index') }}"><img class="logo-vw"
+                                                        src=" {{ asset("public/img/logo.png") }}"></a>
         <div id="#nav-connected" class="p-2">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 Connecté en tant que {{ app.user.username }}
             {% endif %}
         </div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveHeader"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="responsiveHeader">
+
+    <div class="navbar-collapse" id="responsiveHeader">
         <div class="navbar-nav d-flex justify-content-end">
-            <div class="d-flex flex-row">
-                <div class="p-2 input-group">
-                    {#<input class="form-control" type="search" placeholder="Recherche..." aria-label="Search">#}
-                    {#<button class="btn btn-dark" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>#}
+            <div class="p-2 notify-container">
+                <button href="#" class="btn-sm btn-dark" id="dropdown-notify" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" title="Notification"><i class="fa fa-bell"
+                                                                                           aria-hidden="true"></i>
+                </button>
+                <span class="badge badge-primary notify">0</span>
+            </div>
+
+
+            <div class="p-2 dropdown">
+                <button class="btn-sm btn-dark dropdown-toggle" type="button" id="profil-menu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="profil-menu">
+                    <a class="block-relative-profil dropdown-item" href="#">Mon Profil</a>
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a class="block-relative-deconnexion" href="{{ path('fos_user_security_logout') }}">
+                            Déconnexion
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                    {% endif %}
+
                 </div>
             </div>
 
-            <div class="d-flex flex-row" style="">
-                <div class="p-2 notify-contener">
-
-                    <button href="#" class="btn btn-dark" id="dropdown-notify" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" title="Notification"><i class="fa fa-bell"
-                                                                                               aria-hidden="true"></i>
-                    </button>
-                    <span class="badge badge-primary notify">0</span>
-
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><span class="badge badge-success">Success</span></a>
-                        <a class="dropdown-item" href="#"><span class="badge badge-warning">Warning</span></a>
-                        <a class="dropdown-item" href="#"><span class="badge badge-info">Info</span></a>
-                    </div>
-                </div>
-                <div class="p-2 dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="profil-menu" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-
-
-                    </button>
-
-                    <div class="dropdown-menu" aria-labelledby="profil-menu">
-                        <a class="block-relative-profil dropdown-item" href="#">Mon Profil</a>
-
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a class="block-relative-deconnexion" href="{{ path('fos_user_security_logout') }}">
-                                Déconnexion
-                            </a>
-                        {% else %}
-                            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-                        {% endif %}
-
-                    </div>
-                </div>
-
-                <div class="p-2">
-                    <button href="#" class="btn btn-dark" title="Aide"><i class="fa fa-question" aria-hidden="true"></i>
-                    </button>
-                </div>
-
-            </div>
         </div>
-    </div>
 
 
 </nav>

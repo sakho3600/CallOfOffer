@@ -1,7 +1,7 @@
 
 #content {
     width: 100%;
-    padding: 20px 20px 70px 20px;
+    padding: 0px 20px 70px 20px;
     overflow-y: scroll;
 }
 
@@ -43,6 +43,7 @@ tr:nth-child(even) {
 
 .btn-choice-tab {
     display: flex;
+    flex-flow:row-reverse;
 }
 
 .btnPropose, .btnRemoveProp, .btnResponse, .btnDelete {
@@ -55,8 +56,4 @@ tr:nth-child(even) {
 
 td a {
     color: green;
-}
-
-h4 {
-    text-transform: lowercase;
 }

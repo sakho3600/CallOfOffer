@@ -14,20 +14,23 @@ class ViwametalController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@Core/Display/Viwametal/CallOfOffer/CallOfOffer.html.twig',[
+        $propositions = $this->listPropositions();
+        return $this->render('@Core/Display/Viwametal/CallOfOffer/CallOfOffer.html.twig', [
             'list' => $this->listCallsOfOffer(),
             'title' => "Appels d'offre",
-            'propositions' => $this->listPropositions()
+            'propositions' => $propositions
         ]);
     }
 
     public function acceptAction(Request $request)
     {
+        $idProp = $request->get('id');
         return new Response("accepter");
     }
 
     public function refuseAction(Request $request)
     {
+        $idProp = $request->get('id');
         return new Response("refus");
     }
 
@@ -35,20 +38,19 @@ class ViwametalController extends Controller
     {
         $idProp = $request->get('id');
         $tag = $request->get('tag');
+        $propositions = $this->listPropositions();
+        $providers = $this->listProviders();
 
-        return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig',[
+        //$repProposition = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+       // $prop = $repProposition->getByUser($idProvider);
+        return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig', [
             'title' => $tag,
-            'propositions' => $this->listPropositions(),
-            'idProp' => $idProp
+            'propositions' => $propositions,
+            'idProp' => $idProp,
+            'providers' => $providers
         ]);
     }
 
-    public function validateAction(Request $request)
-    {
-        $idProp = $request->get('id');
-
-        return $this->redirectToRoute('vm_user_coo_see');
-    }
 
     public function addAction(Request $request)
     {
@@ -108,14 +110,11 @@ class ViwametalController extends Controller
 
             $userManager->updateUser($provider, true);
 
-
-
-            return $this->render('@Core/Display/Viwametal/index.html.twig', [
-                "form" => $form->createView()
-            ]);
+            return $this->redirectToRoute('vm_user_index');
         }
         return $this->render('@Core/Security/newProvider.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            "title" => "Ajout d'un fournisseur"
         ]);
 
     }
@@ -132,5 +131,11 @@ class ViwametalController extends Controller
         $serviceQueries = $this->get('corebundle.servicesqlqueries');
         $propositions = $serviceQueries->listAll('Proposition');
         return $propositions;
+    }
+    public function listProviders()
+    {
+        $serviceQueries = $this->get('corebundle.servicesqlqueries');
+        $providers = $serviceQueries->listAll('Provider');
+        return $providers;
     }
 }

@@ -11,8 +11,8 @@
 .dropdown-menu{
     /* font-size: 16px !important; */
 }
-.notify-contener{
-    
+.notify-container{
+
     position: relative;
 }
 .notify{
@@ -29,4 +29,7 @@
 .block-relative-deconnexion{
     position: relative;
     left: 25px;
+}
+.navbar-brand{
+    padding-bottom: 80px;
 }

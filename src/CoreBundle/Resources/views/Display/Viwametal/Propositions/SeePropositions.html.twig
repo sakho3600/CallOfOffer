@@ -9,15 +9,8 @@
                      <thead>
                      <tr>
                          <th>
-                             ID
-                         </th>
-                         <th>
                              Fournisseur
                          </th>
-                         <th>
-                             Appel d'offre
-                         </th>
-
                          <th>
                              Prix
                          </th>
@@ -30,20 +23,19 @@
                      </tr>
                      </thead>
                      <tbody>
-                  
+
                      {% for proposition in propositions %}
 
                          {% if proposition.callOfOffer.id  == idProp %}
                              <tr class="tr_viwa_user">
-                                 <td class="col_id">
-                                     {{ proposition.id }}
-                                 </td>
                                  <td class="col_provider">
-                                     {{ proposition.provider.id }}
+                                     {% for prov in providers %}
+                                         {% if prov.id == proposition.provider.id %}
+                                             {{ prov.username }}
+                                         {% endif %}
+                                     {% endfor %}
                                  </td>
-                                 <td class="col_coo">
-                                     {{ proposition.callOfOffer.id }}
-                                 </td>
+
                                  <td class="col_price">
                                      {{ proposition.price }}
                                  </td>
@@ -55,15 +47,14 @@
                                  </td>
                                  <td>
                                      <div class="btn-choice-tab">
+                                         <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
+                                             <button name="del" class="btnRefuse btn-sm btn-danger" type="submit">
+                                                 Refuser
+                                             </button>
+                                         </a>
                                          <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
                                              <button name="del" class="btnAccept btn-sm btn-success" type="submit">
                                                  Accepter
-                                             </button>
-                                         </a>
-                                         <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
-
-                                             <button name="del" class="btnRefuse btn-sm btn-danger" type="submit">
-                                                 Refuser
                                              </button>
                                          </a>
                                      </div>
@@ -71,8 +62,6 @@
                              </tr>
                          {% endif %}
                      {% endfor %}
-
-
                      </tbody>
                  </table>
 

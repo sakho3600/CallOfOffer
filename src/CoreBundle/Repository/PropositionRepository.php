@@ -20,4 +20,11 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleResult();
     }
 
+    public function getByUser($idProvider)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.provider = :idProvider')
+            ->setParameter('idProvider', $idProvider)
+            ->getSingleResult();
+    }
 }

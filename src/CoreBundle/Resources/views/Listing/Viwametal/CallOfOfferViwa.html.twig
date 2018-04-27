@@ -59,6 +59,7 @@
                                         Répondre ({{ nbPresent }})
                                     </button>
                                 </a>
+
                             {% else %}
                                 <a href="{{ path('vm_user_coo_delete', {'id' : row.id }) }}">
                                     <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
@@ -68,8 +69,10 @@
                             {% endif %}
                         </div>
                     </td>
+
                 </tr>
             {% endfor %}
+
             </tbody>
         </table>
 

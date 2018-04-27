@@ -42,11 +42,6 @@ vm_user_coo_see:
     defaults:
         _controller: CoreBundle:Viwametal:see
 
-vm_user_coo_validate:
-    path:   /vmuser/coo/response
-    defaults:
-        _controller: CoreBundle:Viwametal:validate
-
 vm_user_coo_accept:
     path:   /vmuser/coo/accept
     defaults:

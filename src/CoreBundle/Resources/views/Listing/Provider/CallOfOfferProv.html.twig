@@ -55,7 +55,9 @@
                                 {% if isProposed == false %}
                                     {% if (idProp is defined and idProp != row.id) or (idProp is not defined) %}
                                         <a href="{{ path('provider_offer_propose', {'id' : row.id }) }}">
-                                            <button name="propose" class="btnPropose btn-sm btn-success" type="submit">
+                                            <button name="propose"
+                                                    class="btnPropose btn-sm btn-success"
+                                                    type="submit">
                                                 Proposer
                                             </button>
                                         </a>
@@ -65,7 +67,8 @@
                                 {% if (idProp is defined and idProp == row.id) or isProposed == true %}
 
                                     <a href="{{ path('provider_offer_delete', {'id' : row.id }) }}">
-                                        <button name="removeProp" class="btnRemoveProp btn-sm btn-danger"
+                                        <button name="removeProp"
+                                                class="btnRemoveProp btn-sm btn-danger"
                                                 type="submit">
                                             Supprimer
                                         </button>
