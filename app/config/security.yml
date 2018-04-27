@@ -23,15 +23,19 @@ security:
       anonymous: true
 
 
+
+    reinit:
+      pattern: ^/reinit
+      anonymous: true
     creation_viwa_user:
-      pattern: ^/synchro1
+      pattern: ^/createViwaUser
       anonymous: true
-    creation_provider1:
-      pattern: ^/synchro2
-      anonymous: true
-    creation_provider2:
-      pattern: ^/synchro3
-      anonymous: true
+#    creation_provider1:
+#      pattern: ^/synchro2
+#      anonymous: true
+#    creation_provider2:
+#      pattern: ^/synchro3
+#      anonymous: true
 
     main:
       pattern: ^/

@@ -52,6 +52,15 @@ class Proposition
      */
     private $date;
 
+    /**
+     * @ORM\Column(name="isAccepted", type="boolean")
+     */
+    private $isAccepted;
+
+    /**
+     * @ORM\Column(name="isRefused", type="boolean")
+     */
+    private $isRefused;
 
     /**
      * Constructor
@@ -59,6 +68,8 @@ class Proposition
     public function __construct()
     {
         $this->date = new DateTime();
+        $this->isAccepted = false;
+        $this->isRefused = false;
     }
 
 
@@ -190,5 +201,53 @@ class Proposition
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set isAccepted
+     *
+     * @param boolean $isAccepted
+     *
+     * @return Proposition
+     */
+    public function setIsAccepted($isAccepted)
+    {
+        $this->isAccepted = $isAccepted;
+
+        return $this;
+    }
+
+    /**
+     * Get isAccepted
+     *
+     * @return boolean
+     */
+    public function getIsAccepted()
+    {
+        return $this->isAccepted;
+    }
+
+    /**
+     * Set isRefused
+     *
+     * @param boolean $isRefused
+     *
+     * @return Proposition
+     */
+    public function setIsRefused($isRefused)
+    {
+        $this->isRefused = $isRefused;
+
+        return $this;
+    }
+
+    /**
+     * Get isRefused
+     *
+     * @return boolean
+     */
+    public function getIsRefused()
+    {
+        return $this->isRefused;
     }
 }

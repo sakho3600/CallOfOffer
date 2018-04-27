@@ -17,7 +17,7 @@ class TestController extends Controller
 {
 
 
-    public function synchroViwaUserAction()
+    public function createViwaUserAction()
     {
         $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
         $discriminator->setClass('CoreBundle\Entity\ViwaUser');
@@ -35,42 +35,42 @@ class TestController extends Controller
         return new Response('Utilisateur Viwametal créé');
     }
 
-    public function synchroProvider1Action()
-    {
-        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-        $discriminator->setClass('CoreBundle\Entity\Provider');
-
-        $userManager = $this->container->get('pugx_user_manager');
-
-        $provider = $userManager->createUser();
-
-        $provider->setUsername('fournisseur1');
-        $provider->setPlainPassword('fournisseur1');
-        $provider->setEnabled(true);
-
-        $userManager->updateUser($provider, true);
-
-        return new Response('Utilisateur Fournisseur créé');
-    }
-
-    public function synchroProvider2Action()
-    {
-        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-        $discriminator->setClass('CoreBundle\Entity\Provider');
-
-        $userManager = $this->container->get('pugx_user_manager');
-
-        $provider = $userManager->createUser();
-
-        $provider->setUsername('fournisseur2');
-        $provider->setPlainPassword('fournisseur2');
-        $provider->setEnabled(true);
-
-        $userManager->updateUser($provider, true);
-
-        return new Response('Utilisateur Fournisseur créé');
-
-    }
+//    public function synchroProvider1Action()
+//    {
+//        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+//        $discriminator->setClass('CoreBundle\Entity\Provider');
+//
+//        $userManager = $this->container->get('pugx_user_manager');
+//
+//        $provider = $userManager->createUser();
+//
+//        $provider->setUsername('fournisseur1');
+//        $provider->setPlainPassword('fournisseur1');
+//        $provider->setEnabled(true);
+//
+//        $userManager->updateUser($provider, true);
+//
+//        return new Response('Utilisateur Fournisseur créé');
+//    }
+//
+//    public function synchroProvider2Action()
+//    {
+//        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+//        $discriminator->setClass('CoreBundle\Entity\Provider');
+//
+//        $userManager = $this->container->get('pugx_user_manager');
+//
+//        $provider = $userManager->createUser();
+//
+//        $provider->setUsername('fournisseur2');
+//        $provider->setPlainPassword('fournisseur2');
+//        $provider->setEnabled(true);
+//
+//        $userManager->updateUser($provider, true);
+//
+//        return new Response('Utilisateur Fournisseur créé');
+//
+//    }
 
     public function reinitAction()
     {

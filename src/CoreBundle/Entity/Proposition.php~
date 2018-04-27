@@ -52,6 +52,15 @@ class Proposition
      */
     private $date;
 
+    /**
+     * @ORM\Column(name="isAccepted", type="boolean")
+     */
+    private $isAccepted;
+
+    /**
+     * @ORM\Column(name="isRefused", type="boolean")
+     */
+    private $isRefused;
 
     /**
      * Constructor
@@ -166,5 +175,29 @@ class Proposition
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Proposition
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

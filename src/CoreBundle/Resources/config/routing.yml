@@ -71,13 +71,13 @@ reinit_tables:
     defaults: { _controller: CoreBundle:Test:reinit}
 
 synchro_viwa_user:
-    path: /synchro1
-    defaults: { _controller: CoreBundle:Test:synchroViwaUser}
+    path: /createViwaUser
+    defaults: { _controller: CoreBundle:Test:createViwaUser}
 
-synchro_provider1_user:
-    path: /synchro2
-    defaults: { _controller: CoreBundle:Test:synchroProvider1}
-
-synchro_provider2_user:
-    path: /synchro3
-    defaults: { _controller: CoreBundle:Test:synchroProvider2}
+#synchro_provider1_user:
+#    path: /synchro2
+#    defaults: { _controller: CoreBundle:Test:synchroProvider1}
+#
+#synchro_provider2_user:
+#    path: /synchro3
+#    defaults: { _controller: CoreBundle:Test:synchroProvider2}

@@ -59,14 +59,12 @@ class ViwametalController extends Controller
             $serviceQueries->add($coo);
             $coo = new CallOfOffer();
             $form = $this->createForm(CallOfOfferType::class, $coo);
+            return $this->redirectToRoute('vm_user_index');
         }
-        $listOfCallOfOffer = $this->listCallsOfOffer();
+
         return $this->render('@Core/Display/Viwametal/NewCallOfOffer/NewCallOfOffer.html.twig', [
             'form' => $form->createView(),
             'title' => "Faire un appel d'offre",
-            'list' => $listOfCallOfOffer,
-            'form1' => $form,
-            'propositions' => $this->listPropositions()
         ]);
     }
 
@@ -75,7 +73,7 @@ class ViwametalController extends Controller
         $id = $request->get('id');
         $serviceQueries = $this->get('corebundle.servicesqlqueries');
         $serviceQueries->delete($id, 'CallOfOffer');
-        return $this->redirectToRoute('vm_user_coo_add');
+        return $this->redirectToRoute('vm_user_index');
     }
 
 
@@ -110,23 +108,13 @@ class ViwametalController extends Controller
 
             $userManager->updateUser($provider, true);
 
-            $form = $this->createFormBuilder($provider)
-                ->add('username', TextType::class,
-                    [
-                        "required" => true,
-                        "label" => "Nom d'utilisateur"
-                    ])
-                ->add('password', TextType::class, [
-                    "required" => true,
-                    "label" => "Mot de passe"
-                ])
-                ->getForm();
 
-            return $this->render('@Core/Test/test.html.twig', [
+
+            return $this->render('@Core/Display/Viwametal/index.html.twig', [
                 "form" => $form->createView()
             ]);
         }
-        return $this->render('@Core/Test/test.html.twig', [
+        return $this->render('@Core/Security/newProvider.html.twig', [
             "form" => $form->createView()
         ]);
 

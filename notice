@@ -1,0 +1,8 @@
+1 - Créer un utilisateur Viwametal en allant sur :
+http://localhost/git/CallOfOffer/web/app_dev.php/createViwaUser
+par défaut: viwametal/viwametal
+
+2 - Aller à la page de login :
+http://localhost/git/CallOfOffer/web/app_dev.php/login
+
+3 - Commencer par créer les fourisseurs (menu du header - fournisseurs)
