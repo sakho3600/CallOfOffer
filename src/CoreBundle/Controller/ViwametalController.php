@@ -85,7 +85,7 @@ class ViwametalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $request->get('form')['responseViwametal'];
             $proposition = $serviceCoo->refuseProposition($idProp, $comment);
-            $serviceSqlQuery->delete($idProp,"Proposition");
+            //$serviceSqlQuery->delete($idProp,"Proposition");
             return $this->render("@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig", [
                 'tag' => $propositionTag,
                 'title' => "Refus de la proposition  ",

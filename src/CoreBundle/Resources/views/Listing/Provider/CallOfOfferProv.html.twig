@@ -19,15 +19,26 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 {% set cpt = 0 %}
                 {% for row in list %}
 
                     {% set isProposed = false %}
+                    {% set isRefused = false %}
+                    {% set isAccepted = false %}
+
                     {% if propositions is defined %}
                         {% for presence in propositions %}
 
                             {% if row.id == presence.callOfOffer.id and app.user.username == presence.provider.username %}
                                 {% set isProposed = true %}
+                                {% if presence.isAccepted == true %}
+                                    {% set isAccepted = true %}
+                                {% endif %}
+                                {% if presence.isRefused == true %}
+                                    {% set isRefused = true %}
+                                {% endif %}
+
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -65,12 +76,19 @@
                                 {% endif %}
 
                                 {% if (idProp is defined and idProp == row.id) or isProposed == true %}
-
                                     <a href="{{ path('provider_offer_delete', {'id' : row.id }) }}">
                                         <button name="removeProp"
                                                 class="btnRemoveProp btn-sm btn-danger"
                                                 type="submit">
-                                            Supprimer
+                                            {% if isAccepted == true %}
+                                                Offre acceptée
+                                            {% endif %}
+                                            {% if isRefused == true %}
+                                                Offre refusée
+                                            {% endif %}
+                                            {% if isAccepted == false and isRefused == false %}
+                                                Annuler
+                                            {% endif %}
                                         </button>
                                     </a>
 
@@ -84,6 +102,7 @@
                     </tr>
                 {% endfor %}
                 </tbody>
+
             </table>
 
         </div>
