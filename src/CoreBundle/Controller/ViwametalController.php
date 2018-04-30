@@ -28,7 +28,10 @@ class ViwametalController extends Controller
     {
 
         $idProp = $request->get('id');
-        $serviceQueries = $this->get('corebundle.servicecallofoffer');
+        $serviceCoo = $this->get('corebundle.servicecallofoffer');
+        $propositionTag = $serviceCoo->getCooTagFromPropositionId($idProp)['tag'];
+        $providerUsername = $serviceCoo->getCooProviderUsernameFromPropositionId($idProp)['username'];
+        $coo = $serviceCoo->getCooFromPropositionId($idProp)->setInProgress(false);
         $proposition = new Proposition();
         $proposition->setComment("");
         $form = $this->createFormBuilder($proposition)
@@ -40,16 +43,24 @@ class ViwametalController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $request->get('form')['responseViwametal'];
-            $proposition = $serviceQueries->acceptProposition($idProp, $comment);
-            return new Response("Proposition acceptée");
+            $proposition = $serviceCoo->acceptProposition($idProp, $comment);
+            return $this->render("@Core/Display/Viwametal/Propositions/AcceptProposition.html.twig", [
+                'tag' => $propositionTag,
+                'title' => "Acceptation de la proposition  ",
+                'prov_username' => $providerUsername,
+                'acceptation' => true,
+                'coo' =>$coo
+            ]);
 
 
         } else {
 
             return $this->render('@Core/Display/Viwametal/Propositions/AcceptProposition.html.twig', [
                 'idProp' => $idProp,
-                'title' => "Acceptation de la proposition :" ,
+                'title' => "Acceptation de la proposition : ",
+                'tag' => $propositionTag,
                 'form' => $form->createView(),
+                'prov_username' => $providerUsername
             ]);
         }
     }
@@ -57,11 +68,43 @@ class ViwametalController extends Controller
     public function refuseAction(Request $request)
     {
         $idProp = $request->get('id');
-        $serviceQueries = $this->get('corebundle.servicecallofoffer');
-        $proposition = $serviceQueries->refuseProposition($idProp);
-        return $this->render('@Core/Test/test.html.twig', [
-            'proposition' => $proposition
-        ]);
+        $serviceSqlQuery = $this->get('corebundle.servicesqlqueries');
+        $serviceCoo = $this->get('corebundle.servicecallofoffer');
+        $propositionTag = $serviceCoo->getCooTagFromPropositionId($idProp)['tag'];
+        $providerUsername = $serviceCoo->getCooProviderUsernameFromPropositionId($idProp)['username'];
+        $coo = $serviceCoo->getCooFromPropositionId($idProp)->setInProgress(true);
+        $proposition = new Proposition();
+        $proposition->setComment("");
+        $form = $this->createFormBuilder($proposition)
+            ->add('responseViwametal', TextareaType::class, [
+                'label' => "Commentaire ",
+                'required' => true
+            ])
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $request->get('form')['responseViwametal'];
+            $proposition = $serviceCoo->refuseProposition($idProp, $comment);
+            $serviceSqlQuery->delete($idProp,"Proposition");
+            return $this->render("@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig", [
+                'tag' => $propositionTag,
+                'title' => "Refus de la proposition  ",
+                'prov_username' => $providerUsername,
+                'refusal' => true,
+                'coo' =>$coo
+            ]);
+
+
+        } else {
+
+            return $this->render('@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig', [
+                'idProp' => $idProp,
+                'title' => "Refus de la proposition : ",
+                'tag' => $propositionTag,
+                'form' => $form->createView(),
+                'prov_username' => $providerUsername
+            ]);
+        }
     }
 
     public function seeAction(Request $request)

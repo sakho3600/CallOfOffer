@@ -69,6 +69,10 @@ synchro_viwa_user:
     path: /createViwaUser
     defaults: { _controller: CoreBundle:Test:createViwaUser}
 
+
+test:
+    path: /test
+    defaults:  { _controller: CoreBundle:Test:test}
 #synchro_provider1_user:
 #    path: /synchro2
 #    defaults: { _controller: CoreBundle:Test:synchroProvider1}

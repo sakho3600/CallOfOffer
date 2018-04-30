@@ -20,11 +20,24 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleResult();
     }
 
-    public function getByUser($idProvider)
-    {
+    public function getCooByPropositionId($idProp){
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.provider = :idProvider')
-            ->setParameter('idProvider', $idProvider)
+            ->createQuery('SELECT c FROM  CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE p.id = :idProp and c.id = p.callOfOffer')
+            ->setParameter('idProp', $idProp)
+            ->getSingleResult();
+    }
+
+    public function getCooTagByPropositionId($idProp){
+        return $this->getEntityManager()
+            ->createQuery('SELECT c.tag FROM  CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE p.id = :idProp and c.id = p.callOfOffer')
+            ->setParameter('idProp', $idProp)
+            ->getSingleResult();
+    }
+
+    public function getCooProviderUsernameByPropositionId($idProp){
+        return $this->getEntityManager()
+            ->createQuery('SELECT pr.username FROM  CoreBundle:Proposition p, CoreBundle:Provider pr WHERE p.id = :idProp and pr.id = p.provider')
+            ->setParameter('idProp', $idProp)
             ->getSingleResult();
     }
 }

@@ -10,6 +10,9 @@ namespace CoreBundle\Repository;
  */
 class CallOfOfferRepository extends \Doctrine\ORM\EntityRepository
 {
+        public function getTagOfCoobyPropositionId($idProp){
 
+            return 0;
+        }
 
 }

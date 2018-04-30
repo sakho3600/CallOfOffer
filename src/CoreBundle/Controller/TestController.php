@@ -35,43 +35,6 @@ class TestController extends Controller
         return new Response('Utilisateur Viwametal créé');
     }
 
-//    public function synchroProvider1Action()
-//    {
-//        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-//        $discriminator->setClass('CoreBundle\Entity\Provider');
-//
-//        $userManager = $this->container->get('pugx_user_manager');
-//
-//        $provider = $userManager->createUser();
-//
-//        $provider->setUsername('fournisseur1');
-//        $provider->setPlainPassword('fournisseur1');
-//        $provider->setEnabled(true);
-//
-//        $userManager->updateUser($provider, true);
-//
-//        return new Response('Utilisateur Fournisseur créé');
-//    }
-//
-//    public function synchroProvider2Action()
-//    {
-//        $discriminator = $this->container->get('pugx_user.manager.user_discriminator');
-//        $discriminator->setClass('CoreBundle\Entity\Provider');
-//
-//        $userManager = $this->container->get('pugx_user_manager');
-//
-//        $provider = $userManager->createUser();
-//
-//        $provider->setUsername('fournisseur2');
-//        $provider->setPlainPassword('fournisseur2');
-//        $provider->setEnabled(true);
-//
-//        $userManager->updateUser($provider, true);
-//
-//        return new Response('Utilisateur Fournisseur créé');
-//
-//    }
-
     public function reinitAction()
     {
         $serviceQueries = $this->get('corebundle.servicesqlqueries');
@@ -83,5 +46,12 @@ class TestController extends Controller
         return new Response("Réinitialisation des tables : ok!");
 
     }
-
+//
+//    public function testAction(){
+//        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+//        $test = $rep->getCooTagByPropositionId(6);
+//        return $this->render("@Core/Test/test.html.twig",[
+//            'test' => $test
+//        ]);
+//    }
 }

@@ -39,6 +39,30 @@ class ServiceCallOfOffer
         return $prop;
     }
 
+    public function getCooTagFromPropositionId($idProp)
+    {
+        $rep = $this->em
+            ->getRepository('CoreBundle:Proposition');
+        $tag = $rep->getCooTagByPropositionId($idProp);
+        return $tag;
+    }
+
+    public function getCooProviderUsernameFromPropositionId($idProp)
+    {
+        $rep = $this->em
+            ->getRepository('CoreBundle:Proposition');
+        $name = $rep->getCooProviderUsernameByPropositionId($idProp);
+        return $name;
+    }
+
+    public function getCooFromPropositionId($idProp)
+    {
+        $rep = $this->em
+            ->getRepository('CoreBundle:Proposition');
+        $name = $rep->getCooByPropositionId($idProp);
+        return $name;
+    }
+
 
     public function __construct($doctrine)
     {

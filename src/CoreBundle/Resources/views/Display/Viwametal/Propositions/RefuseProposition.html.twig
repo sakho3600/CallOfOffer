@@ -1,15 +1,15 @@
 {% extends "@Core/Display/Viwametal/index.html.twig" %}
  {% block propositions %}
-     {% if tag is defined and prov_username is defined and acceptation is defined and acceptation == true %}
-         <div id="acceptation">
+     {% if tag is defined and prov_username is defined and refusal is defined and refusal == true %}
+         <div id="refusal">
              <div class="p-2">
-                 <h3>Proposition acceptée !</h3>
+                 <h3>Proposition refusée !</h3>
                  <div>Appel d'offre: {{ tag }} </div>
                  <div>Proposition de {{ prov_username }} </div>
 
              </div>
              <div class="p-2"><a href="{{ path('vm_user_index') }}">
-                     <button class="btn btn-success">Retour</button>
+                     <button class="btn btn-danger">Retour</button>
                  </a>
              </div>
              <div>{{ dump(coo) }}</div>
@@ -23,8 +23,8 @@
                  {{ form_row(form.responseViwametal) }}
                  <div class="btn_container">
 
-                     <a href="{{ path('vm_user_coo_accept', {'id' : idProp }) }}">
-                         <button id="btnAccept" name="add" class="btn btn-primary" type="submit">Accepter
+                     <a href="{{ path('vm_user_coo_refuse', {'id' : idProp }) }}">
+                         <button id="btnRefuse" name="add" class="btn btn-primary" type="submit">Refuser
                          </button>
                      </a>
 
