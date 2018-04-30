@@ -14,7 +14,10 @@ class ProviderController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@Core/Display/Provider/index.html.twig');
+        return $this->render('@Core/Display/Provider/index.html.twig',
+            [
+                'list' => $this->listCallsOfOffer()
+            ]);
     }
 
     public function consultAction()
@@ -39,7 +42,7 @@ class ProviderController extends Controller
         $repProposition = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
         $prop = $repProposition->getByCooAndUser($idCallOfOffer, $idProvider);
         $idProp = $prop->getId();
-        $serviceQueries->delete($idProp,'Proposition');
+        $serviceQueries->delete($idProp, 'Proposition');
 
         return $this->redirectToRoute('provider_coo_consult');
 
@@ -56,18 +59,14 @@ class ProviderController extends Controller
         $proposition->setCallOfOffer($callOfOffer);
         $form = $this->createFormBuilder($proposition)
             ->add('price', MoneyType::class)
-            ->add('comment', TextareaType::class, array('required' => false))
+            ->add('comment', TextareaType::class, array('required' => false,
+                'label' => 'Commentaire'))
             ->getForm();
         $form->handleRequest($request);
         $listOfCallsOfOffer = $this->listCallsOfOffer();
         $listOfPropositions = $this->listPropositions();
         if ($form->isSubmitted() && $form->isValid()) {
             $serviceQueries->add($proposition);
-            $consultAndOffer = new Proposition();
-            $form = $this->createFormBuilder($consultAndOffer)
-                ->add('price', MoneyType::class)
-                ->add('comment', TextareaType::class, array('required' => true))
-                ->getForm();
             return $this->render('@Core/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig', [
                 'title' => "Liste des appels d'offre",
                 'list' => $listOfCallsOfOffer,

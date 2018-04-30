@@ -63,6 +63,11 @@ class Proposition
     private $isRefused;
 
     /**
+     * @ORM\Column(name="responseViwametal", type="text", nullable=true)
+     */
+    private $responseViwametal;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -249,5 +254,29 @@ class Proposition
     public function getIsRefused()
     {
         return $this->isRefused;
+    }
+
+    /**
+     * Set responseViwametal
+     *
+     * @param string $responseViwametal
+     *
+     * @return Proposition
+     */
+    public function setResponseViwametal($responseViwametal)
+    {
+        $this->responseViwametal = $responseViwametal;
+
+        return $this;
+    }
+
+    /**
+     * Get responseViwametal
+     *
+     * @return string
+     */
+    public function getResponseViwametal()
+    {
+        return $this->responseViwametal;
     }
 }

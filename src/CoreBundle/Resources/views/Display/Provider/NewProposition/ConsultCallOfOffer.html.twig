@@ -1,8 +1,5 @@
 {% extends "@Core/Display/Provider/index.html.twig" %}
 {% block listing %}
-    {% if test is defined %}
-        {{ dump(test) }}
-    {% else %}
-    {% endif %}
+
     {% include "@Core/Listing/Provider/CallOfOfferProv.html.twig" %}
 {% endblock %}

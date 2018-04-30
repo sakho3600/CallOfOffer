@@ -29,11 +29,8 @@
                          {% if proposition.callOfOffer.id  == idProp %}
                              <tr class="tr_viwa_user">
                                  <td class="col_provider">
-                                     {% for prov in providers %}
-                                         {% if prov.id == proposition.provider.id %}
-                                             {{ prov.username }}
-                                         {% endif %}
-                                     {% endfor %}
+                                     {{ proposition.provider.username }}
+
                                  </td>
 
                                  <td class="col_price">
@@ -48,16 +45,17 @@
                                  <td>
                                      <div class="btn-choice-tab">
                                          <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
-                                             <button name="del" class="btnRefuse btn-sm btn-danger" type="submit">
+                                             <button class="btnRefuse btn-sm btn-danger" type="submit">
                                                  Refuser
                                              </button>
                                          </a>
                                          <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
-                                             <button name="del" class="btnAccept btn-sm btn-success" type="submit">
+                                             <button class="btnAccept btn-sm btn-success" type="submit">
                                                  Accepter
                                              </button>
                                          </a>
                                      </div>
+
                                  </td>
                              </tr>
                          {% endif %}
@@ -67,5 +65,8 @@
 
              </div>
          </div>
+         {% if com is defined %}
+             {{ dump(com) }}
+         {% endif %}
      {% endif %}
  {% endblock %}

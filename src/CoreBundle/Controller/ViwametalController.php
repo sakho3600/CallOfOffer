@@ -3,9 +3,11 @@
 namespace CoreBundle\Controller;
 
 use CoreBundle\Entity\CallOfOffer;
+use CoreBundle\Entity\Proposition;
 use CoreBundle\Entity\Provider;
 use CoreBundle\Form\CallOfOfferType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,14 +26,42 @@ class ViwametalController extends Controller
 
     public function acceptAction(Request $request)
     {
+
         $idProp = $request->get('id');
-        return new Response("accepter");
+        $serviceQueries = $this->get('corebundle.servicecallofoffer');
+        $proposition = new Proposition();
+        $proposition->setComment("");
+        $form = $this->createFormBuilder($proposition)
+            ->add('responseViwametal', TextareaType::class, [
+                'label' => "Commentaire ",
+                'required' => true
+            ])
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $request->get('form')['responseViwametal'];
+            $proposition = $serviceQueries->acceptProposition($idProp, $comment);
+            return new Response("Proposition acceptée");
+
+
+        } else {
+
+            return $this->render('@Core/Display/Viwametal/Propositions/AcceptProposition.html.twig', [
+                'idProp' => $idProp,
+                'title' => "Acceptation de la proposition :" ,
+                'form' => $form->createView(),
+            ]);
+        }
     }
 
     public function refuseAction(Request $request)
     {
         $idProp = $request->get('id');
-        return new Response("refus");
+        $serviceQueries = $this->get('corebundle.servicecallofoffer');
+        $proposition = $serviceQueries->refuseProposition($idProp);
+        return $this->render('@Core/Test/test.html.twig', [
+            'proposition' => $proposition
+        ]);
     }
 
     public function seeAction(Request $request)
@@ -41,8 +71,6 @@ class ViwametalController extends Controller
         $propositions = $this->listPropositions();
         $providers = $this->listProviders();
 
-        //$repProposition = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
-       // $prop = $repProposition->getByUser($idProvider);
         return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig', [
             'title' => $tag,
             'propositions' => $propositions,
@@ -132,6 +160,7 @@ class ViwametalController extends Controller
         $propositions = $serviceQueries->listAll('Proposition');
         return $propositions;
     }
+
     public function listProviders()
     {
         $serviceQueries = $this->get('corebundle.servicesqlqueries');

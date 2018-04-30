@@ -4,6 +4,10 @@ services:
         arguments:
             - "@doctrine"
 
+    corebundle.servicecallofoffer:
+        class: CoreBundle\Service\ServiceCallOfOffer
+        arguments:
+            - "@doctrine"
 
     authentication.handler.login_success_handler:
         class:  CoreBundle\Security\LoginSuccessHandler

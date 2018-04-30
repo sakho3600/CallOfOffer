@@ -42,9 +42,14 @@ class CallOfOffer
      */
     private $quantity;
 
+    /**
+     * @ORM\Column(name="inProgress", type="boolean")
+     */
+    private $inProgress;
 
     /**
-     * @ORM\OneToMany(targetEntity="Proposition", mappedBy="callOfOffer")
+     * @ORM\OneToMany(targetEntity="Proposition", cascade={"remove"}, mappedBy="callOfOffer")
+     * @ORM\JoinColumn(name="proposition_id", referencedColumnName="id")
      * @ORM\JoinColumn(nullable=true)
      */
     private $propositions;
@@ -91,6 +96,7 @@ class CallOfOffer
     {
         $this->propositions = new ArrayCollection();
         $this->date = new DateTime();
+        $this->inProgress = true;
     }
 
 
@@ -140,5 +146,63 @@ class CallOfOffer
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Add proposition
+     *
+     * @param \CoreBundle\Entity\Proposition $proposition
+     *
+     * @return CallOfOffer
+     */
+    public function addProposition(\CoreBundle\Entity\Proposition $proposition)
+    {
+        $this->propositions[] = $proposition;
+
+        return $this;
+    }
+
+    /**
+     * Remove proposition
+     *
+     * @param \CoreBundle\Entity\Proposition $proposition
+     */
+    public function removeProposition(\CoreBundle\Entity\Proposition $proposition)
+    {
+        $this->propositions->removeElement($proposition);
+    }
+
+    /**
+     * Get propositions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPropositions()
+    {
+        return $this->propositions;
+    }
+
+    /**
+     * Set isOk
+     *
+     * @param boolean $isOk
+     *
+     * @return CallOfOffer
+     */
+    public function setIsOk($isOk)
+    {
+        $this->isOk = $isOk;
+
+        return $this;
+    }
+
+    /**
+     * Get isOk
+     *
+     * @return boolean
+     */
+    public function getIsOk()
+    {
+        return $this->isOk;
     }
 }

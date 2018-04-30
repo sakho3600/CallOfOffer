@@ -1,0 +1,22 @@
+{% extends "@Core/Display/Viwametal/index.html.twig" %}
+ {% block propositions %}
+
+
+     {% if form is defined %}
+         <div class="form_container">
+             {{ form_start(form) }}
+             <div class="form_listing">
+                 {{  form_row(form.responseViwametal) }}
+                 <div class="btn_container">
+
+                     <a href="{{ path('vm_user_coo_accept', {'id' : idProp }) }}">
+                         <button id="btnAdd" name="add" class="btn btn-primary" type="submit">Accepter
+                         </button>
+                     </a>
+
+                 </div>
+             </div>
+             {{ form_end(form) }}
+         </div>
+     {% endif %}
+ {% endblock %}

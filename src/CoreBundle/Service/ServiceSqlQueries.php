@@ -9,8 +9,6 @@
 namespace CoreBundle\Service;
 
 
-use CoreBundle\Entity\Proposition;
-
 class ServiceSqlQueries
 {
     private $em;

@@ -13,17 +13,25 @@
     <div class="navbar-collapse" id="responsiveHeader">
         <div class="navbar-nav d-flex justify-content-end">
             <div class="p-2 notify-container">
-                <button href="#" class="btn-sm btn-dark" id="dropdown-notify" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" title="Notification"><i class="fa fa-bell"
-                                                                                           aria-hidden="true"></i>
-                </button>
-                <span class="badge badge-primary notify">0</span>
+                <a href="{{ path('provider_coo_consult') }}">
+                    <button class="btn-sm btn-dark"
+                            title="Notification"><i class="fa fa-bell"
+                                                    aria-hidden="true"></i>
+                    </button>
+                </a>
+                <span class="badge badge-primary notify">
+                     {% if list is defined %}
+                         {{ list | length }}
+                     {% else %}
+                         0
+                     {% endif %}</span>
+                </span>
             </div>
 
 
             <div class="p-2 dropdown">
                 <button class="btn-sm btn-dark dropdown-toggle" type="button" id="profil-menu" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                        aria-haspopup="true" aria-expanded="false">Menu
 
 
                 </button>

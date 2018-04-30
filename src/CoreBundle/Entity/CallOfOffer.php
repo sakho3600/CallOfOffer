@@ -38,10 +38,14 @@ class CallOfOffer
     /**
      * @var integer
      *
-     * @ORM\Column(name="quantity", type="integer", nullable=false)
+     * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
 
+    /**
+     * @ORM\Column(name="inProgress", type="boolean")
+     */
+    private $inProgress;
 
     /**
      * @ORM\OneToMany(targetEntity="Proposition", cascade={"remove"}, mappedBy="callOfOffer")
@@ -92,6 +96,7 @@ class CallOfOffer
     {
         $this->propositions = new ArrayCollection();
         $this->date = new DateTime();
+        $this->inProgress = true;
     }
 
 
@@ -175,5 +180,37 @@ class CallOfOffer
     public function getPropositions()
     {
         return $this->propositions;
+    }
+
+    /**
+     * Set isOk
+     *
+     * @param boolean $isOk
+     *
+     * @return CallOfOffer
+     */
+
+    /**
+     * Set inProgress
+     *
+     * @param boolean $inProgress
+     *
+     * @return CallOfOffer
+     */
+    public function setInProgress($inProgress)
+    {
+        $this->inProgress = $inProgress;
+
+        return $this;
+    }
+
+    /**
+     * Get inProgress
+     *
+     * @return boolean
+     */
+    public function getInProgress()
+    {
+        return $this->inProgress;
     }
 }

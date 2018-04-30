@@ -38,7 +38,7 @@ vm_user_coo_delete:
         _controller: CoreBundle:Viwametal:delete
 
 vm_user_coo_see:
-    path:   /vmuser/coo/response
+    path:   /vmuser/coo/see
     defaults:
         _controller: CoreBundle:Viwametal:see
 
