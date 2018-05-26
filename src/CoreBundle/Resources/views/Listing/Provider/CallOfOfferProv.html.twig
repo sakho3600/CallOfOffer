@@ -1,4 +1,5 @@
-{% if list is defined %}
+{% if listCoo is defined %}
+
     <div class="form_container">
         <div class="table-responsive">
             <table id="table_provider">
@@ -20,63 +21,58 @@
                 </thead>
                 <tbody>
 
-                {% set cpt = 0 %}
-                {% for row in list %}
-
+                {% for coo in listCoo %}
                     {% set isProposed = false %}
-                    {% set isRefused = false %}
                     {% set isAccepted = false %}
+                    {% set isRefused = false %}
 
-                    {% if propositions is defined %}
-                        {% for presence in propositions %}
-
-                            {% if row.id == presence.callOfOffer.id and app.user.username == presence.provider.username %}
+                    {% if propositions is defined and propositions != null %}
+                        {% for prop in propositions %}
+                            {% if prop.callOfOffer.id == coo.id %}
                                 {% set isProposed = true %}
-                                {% if presence.isAccepted == true %}
+
+                                {% if prop.isAccepted == true %}
                                     {% set isAccepted = true %}
                                 {% endif %}
-                                {% if presence.isRefused == true %}
+                                {% if prop.isRefused == true %}
                                     {% set isRefused = true %}
                                 {% endif %}
-
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-                    {% set counter = ( counter | default(0) ) + 1 %}
                     <tr class="tr_provider">
                         <td class="col_id">
-                            {{ counter }}
+                            {{ loop.index }}
+
                         </td>
                         <td class="col_tag">
-                            {% if (idProp is defined and idProp == row.id) or isProposed == true %}
-                                <a href="#">{{ row.tag }}</a>
+                            {% if (isProposed == false ) %}
+                                {{ coo.tag }}
                             {% else %}
-                                {{ row.tag }}
+                                <a href="#">{{ coo.tag }}</a>
                             {% endif %}
                         </td>
                         <td class="col_quantity">
-                            {{ row.quantity }}
+                            {{ coo.quantity }}
                         </td>
                         <td class="col_date">
-                            {{ row.date|date('d-m-Y à H:i') }}
+                            {{ coo.date|date('d-m-Y à H:i') }}
                         </td>
                         <td>
                             <div class="btn-choice-tab">
 
-                                {% if isProposed == false %}
-                                    {% if (idProp is defined and idProp != row.id) or (idProp is not defined) %}
-                                        <a href="{{ path('provider_offer_propose', {'id' : row.id }) }}">
-                                            <button name="propose"
-                                                    class="btnPropose btn-sm btn-success"
-                                                    type="submit">
-                                                Proposer
-                                            </button>
-                                        </a>
-                                    {% endif %}
-                                {% endif %}
 
-                                {% if (idProp is defined and idProp == row.id) or isProposed == true %}
-                                    <a href="{{ path('provider_offer_delete', {'id' : row.id }) }}">
+                                {% if isProposed == false %}
+                                    <a href="{{ path('provider_offer_propose', {'id' : coo.id }) }}">
+                                        <button name="propose"
+                                                class="btnPropose btn-sm btn-success"
+                                                type="submit">
+                                            Proposer
+                                        </button>
+                                    </a>
+                                {% else %}
+
+                                    <a href="{{ path('provider_offer_delete', {'id' : coo.id }) }}">
                                         <button name="removeProp"
                                                 class="btnRemoveProp btn-sm btn-danger"
                                                 type="submit">
@@ -92,10 +88,7 @@
                                         </button>
                                     </a>
 
-                                {% else %}
-
                                 {% endif %}
-
                             </div>
                         </td>
 

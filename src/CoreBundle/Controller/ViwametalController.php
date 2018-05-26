@@ -9,27 +9,33 @@ use CoreBundle\Form\CallOfOfferType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ViwametalController extends Controller
 {
     /**
-     * @return Response Page d'accueil avec la liste des appels d'offre en cours
+     * Retourne la page d'accueil avec la liste des appels d'offre en cours
+     *
+     * @return Response Page d'accueil
      */
     public function indexAction()
     {
-        $count = $this->countPropositions();
+        $propositions = $this->listPropositions();
         return $this->render('@Core/Display/Viwametal/CallOfOffer/CallOfOffer.html.twig', [
             'listCooInProgress' => $this->listCallsOfOffer(true),
             'title' => "Appels d'offre",
-            'count' => $count
+            'propositions' => $propositions
         ]);
     }
 
     /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * Permet d'ajouter un appel d'offre
+     *
+     * @param Request $request pour récupérer les données du formulaire et les traiter
+     *
+     * @return RedirectResponse|Response redirection vers page d'accueil après ajout d'un appel d'offre
      */
     public function addAction(Request $request)
     {
@@ -207,11 +213,11 @@ class ViwametalController extends Controller
         return $listing;
     }
 
-    public function countPropositions()
+    public function listPropositions()
     {
         $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
-        $countProp = $rep->getCountPropositionsOfCoo();
-        return $countProp;
+        $listProp = $rep->findAll();
+        return $listProp;
     }
 
     public function listProviders()

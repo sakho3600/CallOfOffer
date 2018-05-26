@@ -2,29 +2,35 @@
 
 namespace CoreBundle\Controller;
 
-use CoreBundle\CoreBundle;
-use CoreBundle\Entity\CallOfOffer;
 use CoreBundle\Entity\Proposition;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProviderController extends Controller
 {
+    /**
+     * @return Response Page d'accueil vierge
+     */
     public function indexAction()
     {
         return $this->render('@Core/Display/Provider/index.html.twig');
     }
 
+    /**
+     * @return Response Consultation des appels d'offre en cours
+     */
     public function consultAction()
     {
-        $listOfCallOfOffer = $this->listCallsOfOffer(true);
-        $listOfPropositions = $this->listPropositions();
         $user = $this->getUser();
+        $listOfCallOfOffer = $this->listCallsOfOffer(true);
+        $listOfPropositions = $this->listPropositions($user->getId());
+
         return $this->render('@Core/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig', [
             'title' => "Liste des appels d'offre",
-            'list' => $listOfCallOfOffer,
+            'listCoo' => $listOfCallOfOffer,
             'propositions' => $listOfPropositions,
             'user' => $user
         ]);
@@ -55,19 +61,20 @@ class ProviderController extends Controller
         $callOfOffer = $serviceQueries->getRow($idOffer, "CallOfOffer");
         $proposition->setCallOfOffer($callOfOffer);
         $form = $this->createFormBuilder($proposition)
-            ->add('price', MoneyType::class)
-            ->add('comment', TextareaType::class, array('required' => false,
-                'label' => 'Commentaire'))
+            ->add('price', MoneyType::class, [
+                'label' => 'Prix'
+            ])
+            ->add('comment', TextareaType::class, ['required' => false,
+                'label' => 'Commentaire'])
             ->getForm();
         $form->handleRequest($request);
-        $listOfCallsOfOffer = $this->listCallsOfOffer(true);
-        $listOfPropositions = $this->listPropositions();
         if ($form->isSubmitted() && $form->isValid()) {
             $serviceQueries->add($proposition);
+            $listOfCallsOfOffer = $this->listCallsOfOffer(true);
+            $listOfPropositions = $this->listPropositions($user->getId());
             return $this->render('@Core/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig', [
                 'title' => "Liste des appels d'offre",
-                'list' => $listOfCallsOfOffer,
-                'idProp' => $idOffer,
+                'listCoo' => $listOfCallsOfOffer,
                 'propositions' => $listOfPropositions,
                 'user' => $user
             ]);
@@ -76,14 +83,15 @@ class ProviderController extends Controller
         return $this->render('@Core/Display/Provider/NewProposition/NewProposition.html.twig', [
             'form' => $form->createView(),
             'title' => "Faire une offre",
-            'list' => $listOfCallsOfOffer
+            'coo' => $callOfOffer
         ]);
     }
 
-    public function listPropositions()
+    public function listPropositions($idProvider)
     {
-        $serviceQueries = $this->get('corebundle.servicesqlqueries');
-        $propositions = $serviceQueries->listAll('Proposition');
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+
+        $propositions = $rep->getAllPropositionByProviderId($idProvider);
         return $propositions;
     }
 

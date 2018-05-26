@@ -1,6 +1,20 @@
 {% extends "@Core/Display/Provider/index.html.twig" %}
 {% block newProposition %}
-    
 
+    {% if coo is defined %}
+        <div class="table table-responsive table-bordered">
+            <table class="text-center">
+                <tr>
+                    <td><h5>Proposition concernant :</h5></td>
+                    <td><h5>Quantité :</h5></td>
+                </tr>
+                <tr>
+                    <td>{{ coo.tag }}</td>
+                    <td>{{ coo.quantity }}</td>
+                </tr>
+
+            </table>
+        </div>
+    {% endif %}
     {% include "@Core/Form/Provider/NewProposition.html.twig" %}
 {% endblock %}

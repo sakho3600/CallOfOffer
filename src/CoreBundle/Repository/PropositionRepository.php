@@ -32,7 +32,7 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getProviderByPropositionId($idProp)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT pr FROM  CoreBundle:Proposition p, CoreBundle:Provider pr WHERE p.id = :idProp AND pr.id = p.provider')
+            ->createQuery('SELECT pr FROM  CoreBundle:Proposition p, CoreBundle:Provider pr WHERE p.provider = :idProp AND pr.id = p.provider')
             ->setParameter('idProp', $idProp)
             ->getSingleResult();
     }
@@ -40,7 +40,7 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getAllPropositionByProviderId($idProvider)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv')
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.provider = :idProv')
             ->setParameter('idProv', $idProvider)
             ->getResult();
     }
@@ -48,24 +48,27 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getAllPropositionByProviderIdIsAccepted($idProvider)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isAccepted = true')
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.provider = :idProv AND p.isAccepted = TRUE')
             ->setParameter('idProv', $idProvider)
             ->getResult();
     }
+
     public function getAllPropositionByProviderIdIsRefused($idProvider)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isRefused = true')
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.provider = :idProv AND p.isRefused = TRUE')
             ->setParameter('idProv', $idProvider)
             ->getResult();
     }
+
     public function getAllPropositionByProviderIdInWaiting($idProvider)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isAccepted = false and p.isRefused = false')
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isAccepted = FALSE AND p.isRefused = FALSE')
             ->setParameter('idProv', $idProvider)
             ->getResult();
     }
+
     public function getAllPropositionByCooId($idCoo)
     {
         return $this->getEntityManager()
@@ -80,7 +83,6 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery('SELECT count(p) FROM CoreBundle:Proposition p GROUP BY p.id')
             ->getResult();
     }
-
 
 
 }

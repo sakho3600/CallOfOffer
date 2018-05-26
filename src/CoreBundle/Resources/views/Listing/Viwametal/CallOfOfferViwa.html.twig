@@ -33,6 +33,12 @@
             <tbody>
 
             {% for coo in listCooInProgress %}
+                {% set cpt = 0 %}
+                {% for prop in propositions %}
+                    {% if prop.callOfOffer.id == coo.id %}
+                        {% set cpt = cpt + 1 %}
+                    {% endif %}
+                {% endfor %}
 
                 <tr class="tr_viwa_user">
                     <td class="col_id">
@@ -49,14 +55,12 @@
                     </td>
                     <td>
                         <div class="btn-choice-tab">
-                            {% if count != null %}
-                                {% set nbProp = count[cpt] %}
-                            {% endif %}
 
-                            {% if nbProp > 0 %}
+
+                            {% if cpt > 0 %}
                                 <a href="{{ path('vm_user_coo_see', {'id' : coo.id , 'tag' : coo.tag }) }}">
                                     <button name="del" class="btnResponse btn-sm btn-success" type="submit">
-                                        Répondre ({{ nbProp }})
+                                        Répondre ({{ cpt }} )
                                     </button>
                                 </a>
 
@@ -71,7 +75,7 @@
                     </td>
 
                 </tr>
-                {% set cpt = cpt + 1 %}
+
             {% endfor %}
 
             </tbody>

@@ -47,11 +47,32 @@ class TestController extends Controller
 
     }
 
-    public function testAction(){
+    public function testAction()
+    {
         $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
-        $test = $rep->getCountPropositionsOfCoo();
-        return $this->render("@Core/Test/test.html.twig",[
-            'test' => $test
+
+        $propositions = $rep->getAllPropositionByProviderId(2);
+
+        return $this->render("@Core/Test/test.html.twig", [
+            'test1' => $propositions,
+            'test2' => 'test'
+
         ]);
+    }
+
+    public function listPropositions($idProvider)
+    {
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+
+        $propositions = $rep->getAllPropositionByProviderId($idProvider);
+        return $propositions;
+    }
+
+
+    public function listCallsOfOffer($inProgress)
+    {
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:CallOfOffer");
+        $listing = $rep->getAllCooInProgress($inProgress);
+        return $listing;
     }
 }

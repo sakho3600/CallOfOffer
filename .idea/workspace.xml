@@ -6,11 +6,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/ViwametalController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/ViwametalController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Repository/CallOfOfferRepository.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Repository/CallOfOfferRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Viwametal/Header.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Viwametal/Header.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/css/Content/Content.css" afterPath="$PROJECT_DIR$/web/public/css/Content/Content.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,14 +42,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ViwametalController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ViwametalController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ViwametalController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="239">
+              <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
               <folding>
-                <element signature="e#7759#7783#1#PHP" expanded="true" />
-                <element signature="e#7988#8012#1#PHP" expanded="true" />
+                <element signature="e#41#75#0#PHP" expanded="true" />
+                <element signature="e#8015#8039#1#PHP" expanded="true" />
+                <element signature="e#8243#8267#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,71 +59,8 @@
       <file leaf-file-name="CallOfOfferViwa.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1312">
-              <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CallOfOffer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Entity/CallOfOffer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProviderController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding>
-                <element signature="e#477#517#1#PHP" expanded="true" />
-                <element signature="e#3469#3493#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsultCallOfOffer.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Provider/Header.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Viwametal/Header.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+            <state relative-caret-position="244">
+              <caret line="62" column="56" lean-forward="false" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -130,35 +69,58 @@
       <file leaf-file-name="PropositionRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="79" column="84" lean-forward="false" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="84" />
+            <state relative-caret-position="392">
+              <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
               <folding>
-                <marker date="1527325209991" expanded="true" signature="376:473" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="739:850" ph="SELECT c FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="1070:1178" ph="SELECT pr FR... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="1404:1463" ph="SELECT p fro... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="1697:1756" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="1697:1776" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="1697:1780" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2012:2090" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2012:2094" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2326:2429" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2326:2434" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2647:2705" ph="SELECT p FRO... CoreBundle" />
-                <marker date="1527325209991" expanded="true" signature="2909:2968" ph="SELECT count... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="376:473" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="739:850" ph="SELECT c FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="1070:1184" ph="SELECT pr FR... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="1410:1475" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="1709:1774" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="1709:1794" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="1709:1798" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2031:2115" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2031:2119" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2352:2455" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2352:2460" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2674:2732" ph="SELECT p FRO... CoreBundle" />
+                <marker date="1527345917426" expanded="true" signature="2936:2995" ph="SELECT count... CoreBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php">
+      <file leaf-file-name="ProviderController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+            <state relative-caret-position="237">
+              <caret line="67" column="41" lean-forward="false" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
               <folding>
-                <element signature="e#1380#1404#1#PHP" expanded="true" />
+                <element signature="e#41#75#0#PHP" expanded="true" />
+                <element signature="e#524#564#1#PHP" expanded="true" />
+                <element signature="e#3422#3446#1#PHP" expanded="true" />
+                <element signature="e#3683#3707#1#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewProposition.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceCallOfOffer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -176,10 +138,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>edit</find>
-      <find>dump</find>
       <find>Provider</find>
       <find>isPresent</find>
       <find>getByCooAndUse</find>
+      <find>list</find>
+      <find>row</find>
+      <find>{</find>
+      <find>dump</find>
     </findStrings>
     <replaceStrings>
       <replace>noProposition</replace>
@@ -254,24 +219,24 @@
         <option value="$PROJECT_DIR$/src/CoreBundle/Entity/CallOfOffer.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Entity/Proposition.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Provider/Header.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Form/Provider/NewProposition.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/SeePropositions.html.twig" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/RefuseProposition.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/AcceptProposition.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Repository/CallOfOfferRepository.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Viwametal/Header.html.twig" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php" />
-        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig" />
         <option value="$PROJECT_DIR$/web/public/css/Content/Content.css" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Controller/ViwametalController.php" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig" />
       </list>
     </option>
   </component>
@@ -325,7 +290,7 @@
       <path value="$PROJECT_DIR$/vendor/pugx/multi-user-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="743" />
@@ -743,7 +708,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Test" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="settings.editor.splitter.proportion" value="0.23506366" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
@@ -802,12 +767,12 @@
       <workItem from="1524298430330" duration="8026000" />
       <workItem from="1524339313130" duration="600000" />
       <workItem from="1524768096822" duration="44330000" />
-      <workItem from="1527322272891" duration="5753000" />
+      <workItem from="1527322272891" duration="17932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212031000" />
+    <option name="totallyTimeSpent" value="224210000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -819,10 +784,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="752" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="752" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36913767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24583964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32142857" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1042,20 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Form/Provider/NewProposition.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Form/Viwametal/NewCallOfOffer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1071,13 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/SeePropositions.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="68" column="24" lean-forward="false" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notice">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1089,13 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="74" column="51" lean-forward="false" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1129,28 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/AcceptProposition.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="39" column="43" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="39" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Entity/Proposition.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1264">
@@ -1172,7 +1087,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Provider/Header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="-7">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
@@ -1180,48 +1095,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Menu/Viwametal/Header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="-7">
           <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-          <folding>
-            <element signature="e#1380#1404#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="79" column="84" lean-forward="false" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="84" />
-          <folding>
-            <marker date="1527325209991" expanded="true" signature="376:473" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="739:850" ph="SELECT c FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="1070:1178" ph="SELECT pr FR... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="1404:1463" ph="SELECT p fro... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="1697:1756" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="1697:1776" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="1697:1780" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2012:2090" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2012:2094" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2326:2429" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2326:2434" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2647:2705" ph="SELECT p FRO... CoreBundle" />
-            <marker date="1527325209991" expanded="true" signature="2909:2968" ph="SELECT count... CoreBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Entity/CallOfOffer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1242,10 +1117,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1312">
-          <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        <state relative-caret-position="160">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Test/test.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/SeePropositions.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="68" column="24" lean-forward="false" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Entity/CallOfOffer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Form/Provider/NewProposition.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Viwametal/Propositions/AcceptProposition.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1258,33 +1173,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="207">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#1385#1409#1#PHP" expanded="true" />
+            <element signature="e#1747#1771#1#PHP" expanded="true" />
+            <element signature="e#2008#2032#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Service/ServiceCallOfOffer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php">
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Provider/CallOfOfferProv.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        <state relative-caret-position="187">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Repository/PropositionRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
           <folding>
-            <element signature="e#477#517#1#PHP" expanded="true" />
-            <element signature="e#3469#3493#1#PHP" expanded="true" />
+            <marker date="1527345917426" expanded="true" signature="376:473" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="739:850" ph="SELECT c FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="1070:1184" ph="SELECT pr FR... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="1410:1475" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="1709:1774" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="1709:1794" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="1709:1798" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2031:2115" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2031:2119" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2352:2455" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2352:2460" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2674:2732" ph="SELECT p FRO... CoreBundle" />
+            <marker date="1527345917426" expanded="true" signature="2936:2995" ph="SELECT count... CoreBundle" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ViwametalController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="44" />
+        <state relative-caret-position="239">
+          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding>
-            <element signature="e#7759#7783#1#PHP" expanded="true" />
-            <element signature="e#7988#8012#1#PHP" expanded="true" />
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <element signature="e#8015#8039#1#PHP" expanded="true" />
+            <element signature="e#8243#8267#1#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Listing/Viwametal/CallOfOfferViwa.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="62" column="56" lean-forward="false" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ProviderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="67" column="41" lean-forward="false" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <element signature="e#524#564#1#PHP" expanded="true" />
+            <element signature="e#3422#3446#1#PHP" expanded="true" />
+            <element signature="e#3683#3707#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Display/Provider/NewProposition/NewProposition.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
