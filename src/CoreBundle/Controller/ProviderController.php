@@ -14,15 +14,12 @@ class ProviderController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@Core/Display/Provider/index.html.twig',
-            [
-                'list' => $this->listCallsOfOffer()
-            ]);
+        return $this->render('@Core/Display/Provider/index.html.twig');
     }
 
     public function consultAction()
     {
-        $listOfCallOfOffer = $this->listCallsOfOffer();
+        $listOfCallOfOffer = $this->listCallsOfOffer(true);
         $listOfPropositions = $this->listPropositions();
         $user = $this->getUser();
         return $this->render('@Core/Display/Provider/NewProposition/ConsultCallOfOffer.html.twig', [
@@ -63,7 +60,7 @@ class ProviderController extends Controller
                 'label' => 'Commentaire'))
             ->getForm();
         $form->handleRequest($request);
-        $listOfCallsOfOffer = $this->listCallsOfOffer();
+        $listOfCallsOfOffer = $this->listCallsOfOffer(true);
         $listOfPropositions = $this->listPropositions();
         if ($form->isSubmitted() && $form->isValid()) {
             $serviceQueries->add($proposition);
@@ -90,10 +87,11 @@ class ProviderController extends Controller
         return $propositions;
     }
 
-    public function listCallsOfOffer()
+
+    public function listCallsOfOffer($inProgress)
     {
-        $serviceQueries = $this->get('corebundle.servicesqlqueries');
-        $listing = $serviceQueries->listAll('CallOfOffer');
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:CallOfOffer");
+        $listing = $rep->getAllCooInProgress($inProgress);
         return $listing;
     }
 }

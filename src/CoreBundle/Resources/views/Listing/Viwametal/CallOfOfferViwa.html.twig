@@ -1,4 +1,14 @@
-{% if list is defined %}
+{% if listCooInProgress is defined and listCooInProgress != null %}
+
+    {% if count is defined %}
+        {% set cpt = 0 %}
+        {% if count == null %}
+            {% set nbProp = 0 %}
+        {% else %}
+            {% set nbProp = count[cpt] %}
+
+        {% endif %}
+    {% endif %}
     <div class="form_container">
 
 
@@ -22,62 +32,54 @@
             </thead>
             <tbody>
 
-            {% for row in list %}
-                {% if row.inProgress == true %}
-                    <tr class="tr_viwa_user">
-                        <td class="col_id">
-                            {{ row.id }}
-                        </td>
-                        <td class="col_tag">
-                            {{ row.tag }}
-                        </td>
-                        <td class="col_quantity">
-                            {{ row.quantity }}
-                        </td>
-                        <td class="col_date">
-                            {{ row.date|date('d-m-Y à H:i') }}
-                        </td>
-                        <td>
-                            <div class="btn-choice-tab">
+            {% for coo in listCooInProgress %}
 
-                                {% set isPresent = false %}
-                                {% if propositions is defined %}
-                                    {% for prop in propositions %}
-                                        {% if prop.callOfOffer.id == row.id %}
-                                            {% set isPresent = true %}
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %}
-                                {% if isPresent == true %}
-                                    {% set nbPresent = 0 %}
-                                    {% for prop in propositions %}
-                                        {% if prop.callOfOffer.id == row.id %}
-                                            {% set nbPresent = nbPresent + 1 %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    <a href="{{ path('vm_user_coo_see', {'id' : row.id , 'tag' : row.tag }) }}">
-                                        <button name="del" class="btnResponse btn-sm btn-success" type="submit">
-                                            Répondre ({{ nbPresent }})
-                                        </button>
-                                    </a>
+                <tr class="tr_viwa_user">
+                    <td class="col_id">
+                        {{ coo.id }}
+                    </td>
+                    <td class="col_tag">
+                        {{ coo.tag }}
+                    </td>
+                    <td class="col_quantity">
+                        {{ coo.quantity }}
+                    </td>
+                    <td class="col_date">
+                        {{ coo.date|date('d-m-Y à H:i') }}
+                    </td>
+                    <td>
+                        <div class="btn-choice-tab">
+                            {% if count != null %}
+                                {% set nbProp = count[cpt] %}
+                            {% endif %}
 
-                                {% else %}
-                                    <a href="{{ path('vm_user_coo_delete', {'id' : row.id }) }}">
-                                        <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
-                                            Supprimer
-                                        </button>
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </td>
+                            {% if nbProp > 0 %}
+                                <a href="{{ path('vm_user_coo_see', {'id' : coo.id , 'tag' : coo.tag }) }}">
+                                    <button name="del" class="btnResponse btn-sm btn-success" type="submit">
+                                        Répondre ({{ nbProp }})
+                                    </button>
+                                </a>
 
-                    </tr>
-                {% endif %}
+                            {% else %}
+                                <a href="{{ path('vm_user_coo_delete', {'id' : coo.id }) }}">
+                                    <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
+                                        Supprimer
+                                    </button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </td>
+
+                </tr>
+                {% set cpt = cpt + 1 %}
             {% endfor %}
 
             </tbody>
         </table>
 
     </div>
-
+{% else %}
+    <div class="noCoo title_container">
+        AUCUN APPEL D'OFFRE EN COURS
+    </div>
 {% endif %}

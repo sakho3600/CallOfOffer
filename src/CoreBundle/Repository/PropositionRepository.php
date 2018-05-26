@@ -14,30 +14,73 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getByCooAndUser($idCoo, $idProvider)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.provider = :idProvider and p.callOfOffer = :idCoo')
+            ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.provider = :idProvider AND p.callOfOffer = :idCoo')
             ->setParameter('idProvider', $idProvider)
             ->setParameter('idCoo', $idCoo)
             ->getSingleResult();
     }
 
-    public function getCooByPropositionId($idProp){
+    public function getCooByPropositionId($idProp)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT c FROM  CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE p.id = :idProp and c.id = p.callOfOffer')
+            ->createQuery('SELECT c FROM  CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE p.id = :idProp AND c.id = p.callOfOffer')
             ->setParameter('idProp', $idProp)
             ->getSingleResult();
     }
 
-    public function getCooTagByPropositionId($idProp){
+
+    public function getProviderByPropositionId($idProp)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT c.tag FROM  CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE p.id = :idProp and c.id = p.callOfOffer')
+            ->createQuery('SELECT pr FROM  CoreBundle:Proposition p, CoreBundle:Provider pr WHERE p.id = :idProp AND pr.id = p.provider')
             ->setParameter('idProp', $idProp)
             ->getSingleResult();
     }
 
-    public function getCooProviderUsernameByPropositionId($idProp){
+    public function getAllPropositionByProviderId($idProvider)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT pr.username FROM  CoreBundle:Proposition p, CoreBundle:Provider pr WHERE p.id = :idProp and pr.id = p.provider')
-            ->setParameter('idProp', $idProp)
-            ->getSingleResult();
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv')
+            ->setParameter('idProv', $idProvider)
+            ->getResult();
     }
+
+    public function getAllPropositionByProviderIdIsAccepted($idProvider)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isAccepted = true')
+            ->setParameter('idProv', $idProvider)
+            ->getResult();
+    }
+    public function getAllPropositionByProviderIdIsRefused($idProvider)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isRefused = true')
+            ->setParameter('idProv', $idProvider)
+            ->getResult();
+    }
+    public function getAllPropositionByProviderIdInWaiting($idProvider)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idProv AND p.isAccepted = false and p.isRefused = false')
+            ->setParameter('idProv', $idProvider)
+            ->getResult();
+    }
+    public function getAllPropositionByCooId($idCoo)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idCoo')
+            ->setParameter('idProv', $idCoo)
+            ->getResult();
+    }
+
+    public function getCountPropositionsOfCoo()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT count(p) FROM CoreBundle:Proposition p GROUP BY p.id')
+            ->getResult();
+    }
+
+
+
 }

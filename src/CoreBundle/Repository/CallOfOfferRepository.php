@@ -10,9 +10,19 @@ namespace CoreBundle\Repository;
  */
 class CallOfOfferRepository extends \Doctrine\ORM\EntityRepository
 {
-        public function getTagOfCoobyPropositionId($idProp){
+    public function getAllCoo()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c FROM CoreBundle:CallOfOffer c')
+           ->getResult();
+    }
 
-            return 0;
-        }
+    public function getAllCooInProgress($inProgress)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c FROM CoreBundle:CallOfOffer c WHERE c.inProgress = :inProgress')
+            ->setParameter('inProgress', $inProgress)
+            ->getResult();
+    }
 
 }

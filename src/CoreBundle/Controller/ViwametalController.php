@@ -14,13 +14,41 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ViwametalController extends Controller
 {
+    /**
+     * @return Response Page d'accueil avec la liste des appels d'offre en cours
+     */
     public function indexAction()
     {
-        $propositions = $this->listPropositions();
+        $count = $this->countPropositions();
         return $this->render('@Core/Display/Viwametal/CallOfOffer/CallOfOffer.html.twig', [
-            'list' => $this->listCallsOfOffer(),
+            'listCooInProgress' => $this->listCallsOfOffer(true),
             'title' => "Appels d'offre",
-            'propositions' => $propositions
+            'count' => $count
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function addAction(Request $request)
+    {
+        $count = $this->countPropositions();
+        $coo = new CallOfOffer();
+        $form = $this->createForm(CallOfOfferType::class, $coo)->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $serviceQueries = $this->get('corebundle.servicesqlqueries');
+            $serviceQueries->add($coo);
+            $coo = new CallOfOffer();
+            $form = $this->createForm(CallOfOfferType::class, $coo);
+            return $this->redirectToRoute('vm_user_index');
+        }
+
+        return $this->render('@Core/Display/Viwametal/NewCallOfOffer/NewCallOfOffer.html.twig', [
+            'form' => $form->createView(),
+            'title' => "Faire un appel d'offre",
+            'listCooInProgress' => $this->listCallsOfOffer(true),
+            'count' => $count
         ]);
     }
 
@@ -49,7 +77,7 @@ class ViwametalController extends Controller
                 'title' => "Acceptation de la proposition  ",
                 'prov_username' => $providerUsername,
                 'acceptation' => true,
-                'coo' =>$coo
+                'coo' => $coo
             ]);
 
 
@@ -91,7 +119,7 @@ class ViwametalController extends Controller
                 'title' => "Refus de la proposition  ",
                 'prov_username' => $providerUsername,
                 'refusal' => true,
-                'coo' =>$coo
+                'coo' => $coo
             ]);
 
 
@@ -122,24 +150,6 @@ class ViwametalController extends Controller
         ]);
     }
 
-
-    public function addAction(Request $request)
-    {
-        $coo = new CallOfOffer();
-        $form = $this->createForm(CallOfOfferType::class, $coo)->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $serviceQueries = $this->get('corebundle.servicesqlqueries');
-            $serviceQueries->add($coo);
-            $coo = new CallOfOffer();
-            $form = $this->createForm(CallOfOfferType::class, $coo);
-            return $this->redirectToRoute('vm_user_index');
-        }
-
-        return $this->render('@Core/Display/Viwametal/NewCallOfOffer/NewCallOfOffer.html.twig', [
-            'form' => $form->createView(),
-            'title' => "Faire un appel d'offre",
-        ]);
-    }
 
     public function deleteAction(Request $request)
     {
@@ -190,18 +200,18 @@ class ViwametalController extends Controller
 
     }
 
-    public function listCallsOfOffer()
+    public function listCallsOfOffer($inProgress)
     {
-        $serviceQueries = $this->get('corebundle.servicesqlqueries');
-        $listing = $serviceQueries->listAll('CallOfOffer');
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:CallOfOffer");
+        $listing = $rep->getAllCooInProgress($inProgress);
         return $listing;
     }
 
-    public function listPropositions()
+    public function countPropositions()
     {
-        $serviceQueries = $this->get('corebundle.servicesqlqueries');
-        $propositions = $serviceQueries->listAll('Proposition');
-        return $propositions;
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $countProp = $rep->getCountPropositionsOfCoo();
+        return $countProp;
     }
 
     public function listProviders()

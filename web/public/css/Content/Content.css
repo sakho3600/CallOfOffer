@@ -76,3 +76,10 @@ td a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
+
+.noCoo{
+    width:40%;
+    font-size: 2em;
+    color: #aaa;
+    padding-top: 5%;
+}

@@ -46,12 +46,12 @@ class TestController extends Controller
         return new Response("Réinitialisation des tables : ok!");
 
     }
-//
-//    public function testAction(){
-//        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
-//        $test = $rep->getCooTagByPropositionId(6);
-//        return $this->render("@Core/Test/test.html.twig",[
-//            'test' => $test
-//        ]);
-//    }
+
+    public function testAction(){
+        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $test = $rep->getCountPropositionsOfCoo();
+        return $this->render("@Core/Test/test.html.twig",[
+            'test' => $test
+        ]);
+    }
 }
