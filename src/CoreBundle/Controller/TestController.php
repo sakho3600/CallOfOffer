@@ -51,10 +51,10 @@ class TestController extends Controller
     {
         $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
 
-        $propositions = $rep->getAllPropositionByProviderId(2);
+        $coo = $rep->getCooByPropositionId(18);
 
         return $this->render("@Core/Test/test.html.twig", [
-            'test1' => $propositions,
+            'test1' => $coo,
             'test2' => 'test'
 
         ]);

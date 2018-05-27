@@ -72,17 +72,9 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getAllPropositionByCooId($idCoo)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.id = :idCoo')
-            ->setParameter('idProv', $idCoo)
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE c.id = :idCoo')
+            ->setParameter('idCoo', $idCoo)
             ->getResult();
     }
-
-    public function getCountPropositionsOfCoo()
-    {
-        return $this->getEntityManager()
-            ->createQuery('SELECT count(p) FROM CoreBundle:Proposition p GROUP BY p.id')
-            ->getResult();
-    }
-
 
 }

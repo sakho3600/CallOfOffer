@@ -10,6 +10,14 @@ namespace CoreBundle\Repository;
  */
 class CallOfOfferRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCoo($idCoo)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c FROM CoreBundle:CallOfOffer c WHERE c.id = :idCoo')
+            ->setParameter('idCoo', $idCoo)
+            ->getSingleResult();
+    }
+
     public function getAllCoo()
     {
         return $this->getEntityManager()

@@ -39,7 +39,7 @@ class ViwametalController extends Controller
      */
     public function addAction(Request $request)
     {
-        $count = $this->countPropositions();
+        $propositions = $this->listPropositions();
         $coo = new CallOfOffer();
         $form = $this->createForm(CallOfOfferType::class, $coo)->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,7 +54,7 @@ class ViwametalController extends Controller
             'form' => $form->createView(),
             'title' => "Faire un appel d'offre",
             'listCooInProgress' => $this->listCallsOfOffer(true),
-            'count' => $count
+            'propositions' => $propositions
         ]);
     }
 
@@ -102,7 +102,6 @@ class ViwametalController extends Controller
     public function refuseAction(Request $request)
     {
         $idProp = $request->get('id');
-        $serviceSqlQuery = $this->get('corebundle.servicesqlqueries');
         $serviceCoo = $this->get('corebundle.servicecallofoffer');
         $propositionTag = $serviceCoo->getCooTagFromPropositionId($idProp)['tag'];
         $providerUsername = $serviceCoo->getCooProviderUsernameFromPropositionId($idProp)['username'];
@@ -119,7 +118,6 @@ class ViwametalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $request->get('form')['responseViwametal'];
             $proposition = $serviceCoo->refuseProposition($idProp, $comment);
-            //$serviceSqlQuery->delete($idProp,"Proposition");
             return $this->render("@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig", [
                 'tag' => $propositionTag,
                 'title' => "Refus de la proposition  ",
@@ -143,16 +141,16 @@ class ViwametalController extends Controller
 
     public function seeAction(Request $request)
     {
-        $idProp = $request->get('id');
-        $tag = $request->get('tag');
-        $propositions = $this->listPropositions();
-        $providers = $this->listProviders();
+        $idCoo = $request->get('id');
+        $repCoo = $this->getDoctrine()->getManager()->getRepository("CoreBundle:CallOfOffer");
+        $repProp = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $coo = $repCoo->getCoo($idCoo);
+        $tag = $coo->getTag();
+        $propositions = $repProp->getAllPropositionByCooId($idCoo);
 
         return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig', [
             'title' => $tag,
-            'propositions' => $propositions,
-            'idProp' => $idProp,
-            'providers' => $providers
+            'propositions' => $propositions,  
         ]);
     }
 

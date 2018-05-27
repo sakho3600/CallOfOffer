@@ -26,47 +26,45 @@
 
                      {% for proposition in propositions %}
 
-                         {% if proposition.callOfOffer.id  == idProp %}
-                             <tr class="tr_viwa_user">
-                                 <td class="col_provider">
-                                     {{ proposition.provider.username }}
 
-                                 </td>
+                         <tr class="tr_viwa_user">
+                             <td class="col_provider">
+                                 {{ proposition.provider.username }}
 
-                                 <td class="col_price">
-                                     {{ proposition.price }}
-                                 </td>
-                                 <td class="col_comment">
-                                     {{ proposition.comment }}
-                                 </td>
-                                 <td class="col_date">
-                                     {{ proposition.date |date('d-m-Y à H:i') }}
-                                 </td>
-                                 <td>
-                                     <div class="btn-choice-tab">
-                                         <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
-                                             <button class="btnRefuse btn-sm btn-danger" type="submit">
-                                                 Refuser
-                                             </button>
-                                         </a>
-                                         <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
-                                             <button class="btnAccept btn-sm btn-success" type="submit">
-                                                 Accepter
-                                             </button>
-                                         </a>
-                                     </div>
+                             </td>
 
-                                 </td>
-                             </tr>
-                         {% endif %}
+                             <td class="col_price">
+                                 {{ proposition.price }}
+                             </td>
+                             <td class="col_comment">
+                                 {{ proposition.comment }}
+                             </td>
+                             <td class="col_date">
+                                 {{ proposition.date |date('d-m-Y à H:i') }}
+                             </td>
+                             <td>
+                                 <div class="btn-choice-tab">
+                                     <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
+                                         <button class="btnRefuse btn-sm btn-danger" type="submit">
+                                             Refuser
+                                         </button>
+                                     </a>
+                                     <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
+                                         <button class="btnAccept btn-sm btn-success" type="submit">
+                                             Accepter
+                                         </button>
+                                     </a>
+                                 </div>
+
+                             </td>
+                         </tr>
+
                      {% endfor %}
                      </tbody>
                  </table>
 
              </div>
          </div>
-         {% if com is defined %}
-             {{ dump(com) }}
-         {% endif %}
+
      {% endif %}
  {% endblock %}
