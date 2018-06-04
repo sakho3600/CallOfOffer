@@ -21,24 +21,25 @@ form label {
 }
 
 form input[type='text'] {
-    max-width: 550px;
+    width: 70%;
 !important;
 }
 
 form textarea {
-    max-width: 550px;
-!important;
+    width: 70%;
     height: 60px;
 }
 
 .btn_container {
     text-align: center;
-    margin-top:15px;
+    margin-top: 15px;
 !important;
 }
-#corebundle_callofoffer_tag{
+
+#corebundle_callofoffer_tag {
     width: 300px;
 }
+
 #corebundle_sqlquery_bdd {
     width: 200px;
 !important;
@@ -56,9 +57,11 @@ form textarea {
 
 }
 
-form label{
+form label {
     margin-right: 20px;
     margin-top: 15px;
 }
 
-
+#acceptation{
+    margin-bottom: 20px;
+}

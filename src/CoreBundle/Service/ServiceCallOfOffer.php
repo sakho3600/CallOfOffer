@@ -15,14 +15,14 @@ class ServiceCallOfOffer
 
     public function acceptProposition($idProp, $comment)
     {
-        $prop = $this->em
-            ->getRepository('CoreBundle:Proposition')
-            ->find($idProp);
+        $repProp = $this->em->getRepository('CoreBundle:Proposition');
+        $prop=$repProp->find($idProp);
         $prop->setIsRefused(false);
         $prop->setIsAccepted(true);
         $prop->setResponseViwametal($comment);
+        $coo = $repProp->getCooByPropositionId($idProp);
+        $coo->setInProgress(false);
         $this->em->flush();
-
         return $prop;
     }
 

@@ -11,13 +11,21 @@ namespace CoreBundle\Repository;
 class PropositionRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getByCooAndUser($idCoo, $idProvider)
+    public function getPropositionByCooAndUser($idCoo, $idProvider)
     {
         return $this->getEntityManager()
             ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.provider = :idProvider AND p.callOfOffer = :idCoo')
             ->setParameter('idProvider', $idProvider)
             ->setParameter('idCoo', $idCoo)
             ->getSingleResult();
+    }
+
+    public function getPropositionsByCoo($idCoo)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM  CoreBundle:Proposition p WHERE p.callOfOffer = :idCoo')
+            ->setParameter('idCoo', $idCoo)
+            ->getResult();
     }
 
     public function getCooByPropositionId($idProp)
@@ -72,7 +80,7 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
     public function getAllPropositionByCooId($idCoo)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM CoreBundle:Proposition p, CoreBundle:CallOfOffer c WHERE c.id = :idCoo')
+            ->createQuery('SELECT p FROM CoreBundle:Proposition p WHERE p.callOfOffer = :idCoo')
             ->setParameter('idCoo', $idCoo)
             ->getResult();
     }

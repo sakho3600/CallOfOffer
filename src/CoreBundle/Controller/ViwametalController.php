@@ -63,9 +63,14 @@ class ViwametalController extends Controller
 
         $idProp = $request->get('id');
         $serviceCoo = $this->get('corebundle.servicecallofoffer');
-        $propositionTag = $serviceCoo->getCooTagFromPropositionId($idProp)['tag'];
-        $providerUsername = $serviceCoo->getCooProviderUsernameFromPropositionId($idProp)['username'];
-        $coo = $serviceCoo->getCooFromPropositionId($idProp)->setInProgress(false);
+        $repProp = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Proposition');
+        $coo = $repProp->getCooByPropositionId($idProp);
+        $prop = $repProp->find($idProp);
+//        $coo->setInProgress(false);
+//        $prop->setIsRefused(false);
+//        $prop->setIsAccepted(true);
+        $provider = $prop->getProvider(); //à dumper pour username
+
         $proposition = new Proposition();
         $proposition->setComment("");
         $form = $this->createFormBuilder($proposition)
@@ -78,23 +83,16 @@ class ViwametalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $request->get('form')['responseViwametal'];
             $proposition = $serviceCoo->acceptProposition($idProp, $comment);
-            return $this->render("@Core/Display/Viwametal/Propositions/AcceptProposition.html.twig", [
-                'tag' => $propositionTag,
-                'title' => "Acceptation de la proposition  ",
-                'prov_username' => $providerUsername,
-                'acceptation' => true,
-                'coo' => $coo
-            ]);
 
-
+            return $this->redirectToRoute('vm_user_index');
         } else {
 
             return $this->render('@Core/Display/Viwametal/Propositions/AcceptProposition.html.twig', [
                 'idProp' => $idProp,
-                'title' => "Acceptation de la proposition : ",
-                'tag' => $propositionTag,
+                'title' => "Acceptation de la proposition",
+                'tag' => $coo->getTag(),
                 'form' => $form->createView(),
-                'prov_username' => $providerUsername
+                'prov_username' => $provider->getUsername()
             ]);
         }
     }
@@ -150,7 +148,7 @@ class ViwametalController extends Controller
 
         return $this->render('@Core/Display/Viwametal/Propositions/SeePropositions.html.twig', [
             'title' => $tag,
-            'propositions' => $propositions,  
+            'propositions' => $propositions,
         ]);
     }
 
@@ -213,8 +211,8 @@ class ViwametalController extends Controller
 
     public function listPropositions()
     {
-        $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
-        $listProp = $rep->findAll();
+        $serviceQueries = $this->get('corebundle.servicesqlqueries');
+        $listProp = $serviceQueries->listAll('Proposition');
         return $listProp;
     }
 

@@ -87,6 +87,7 @@ class ProviderController extends Controller
         ]);
     }
 
+
     public function listPropositions($idProvider)
     {
         $rep = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
