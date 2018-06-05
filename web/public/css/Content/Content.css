@@ -10,7 +10,7 @@ table {
     margin: 10px auto;
     width: 100%;
     min-width: 400px;
-    max-width: 700px;
+    max-width: 900px;
 }
 
 th {
@@ -43,7 +43,7 @@ tr:nth-child(even) {
 
 .btn-choice-tab {
     display: flex;
-    flex-flow:row-reverse;
+    flex-flow: row-reverse;
 }
 
 .btnPropose, .btnRemoveProp, .btnResponse, .btnDelete {
@@ -58,28 +58,47 @@ td a {
     color: green;
 }
 
-#acceptation{
+#acceptation {
     text-align: center;
     background-color: #85e0c0;
-    -moz-box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
-
-#refusal{
+#refusal {
     text-align: center;
     background-color: #d8e096;
-    -moz-box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
-.noCoo{
-    width:40%;
+.noCoo {
+    width: 40%;
     font-size: 2em;
     color: #aaa;
     padding-top: 5%;
+}
+
+.col_provider {
+    min-width: 12%;
+}
+
+.col_price {
+    min-width: 10%;
+}
+
+.col_date {
+    min-width: 14%;
+}
+
+td {
+    padding: 5px;
+}
+
+.btnResponse{
+    width: 120px;
 }

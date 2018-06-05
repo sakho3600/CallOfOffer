@@ -3,6 +3,7 @@
 namespace CoreBundle\Controller;
 
 use CoreBundle\Entity\Proposition;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -36,6 +37,28 @@ class ProviderController extends Controller
         ]);
     }
 
+    public function consultAcceptedAction()
+    {
+        $idProvider = $this->getUser()->getId();
+        $repProp = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $listPropAccepted = $repProp->getAllPropositionByProviderIdIsAccepted($idProvider);
+        return $this->render('@Core/Display/Provider/Propositions/ConsultAccepted.html.twig', [
+            'title' => "Proposition(s) acceptée(s)",
+            'listPropAccepted' => $listPropAccepted,
+        ]);
+    }
+
+    public function consultRefusedAction()
+    {
+        $idProvider = $this->getUser()->getId();
+        $repProp = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $listPropRefused = $repProp->getAllPropositionByProviderIdIsRefused($idProvider);
+        return $this->render('@Core/Display/Provider/Propositions/ConsultRefused.html.twig', [
+            'title' => "Proposition(s) refusée(s)",
+            'listPropRefused' => $listPropRefused,
+        ]);
+    }
+
     public function deleteAction(Request $request)
     {
         $idCallOfOffer = $request->get('id');
@@ -63,6 +86,9 @@ class ProviderController extends Controller
         $form = $this->createFormBuilder($proposition)
             ->add('price', MoneyType::class, [
                 'label' => 'Prix'
+            ])
+            ->add('dateLivPrev', DateType::class, [
+                'widget' => 'choice'
             ])
             ->add('comment', TextareaType::class, ['required' => false,
                 'label' => 'Commentaire'])

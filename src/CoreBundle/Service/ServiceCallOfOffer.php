@@ -13,10 +13,11 @@ class ServiceCallOfOffer
 {
     private $em;
 
+////////////////////////////
     public function acceptProposition($idProp, $comment)
     {
         $repProp = $this->em->getRepository('CoreBundle:Proposition');
-        $prop=$repProp->find($idProp);
+        $prop = $repProp->find($idProp);
         $prop->setIsRefused(false);
         $prop->setIsAccepted(true);
         $prop->setResponseViwametal($comment);
@@ -28,17 +29,14 @@ class ServiceCallOfOffer
 
     public function refuseProposition($idProp, $comment)
     {
-        $prop = $this->em
-            ->getRepository('CoreBundle:Proposition')
-            ->find($idProp);
+        $repProp = $this->em->getRepository('CoreBundle:Proposition');
+        $prop = $repProp->find($idProp);
         $prop->setIsRefused(true);
         $prop->setIsAccepted(false);
         $prop->setResponseViwametal($comment);
         $this->em->flush();
-
         return $prop;
     }
-
 
 
     public function __construct($doctrine)

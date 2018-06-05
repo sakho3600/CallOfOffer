@@ -1,0 +1,57 @@
+{% if listPropRefused is defined %}
+
+    <div class="form_container">
+        <div class="table-responsive">
+            <table id="table_provider">
+                <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Libellé
+                    </th>
+                    <th>
+                        Réponse
+                    </th>
+                    {#<th colspan="2">#}
+                    {#Date#}
+                    {#</th>#}
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for prop in listPropRefused %}
+
+                    <tr class="tr_provider">
+                        <td class="col_id">
+                            {{ prop.id }}
+
+                        </td>
+                        <td class="col_tag">
+
+                            <a href="#">{{ prop.callOfOffer.tag }}</a>
+
+                        </td>
+                        <td class="col_resp">
+                            {{ prop.responseViwametal }}
+                        </td>
+                        {#<td class="col_date">#}
+                        {#{{ coo.date|date('d-m-Y à H:i') }}#}
+                        {#</td>#}
+                        <td>
+                            <div class="btn-choice-tab">
+
+
+                            </div>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+{% endif %}

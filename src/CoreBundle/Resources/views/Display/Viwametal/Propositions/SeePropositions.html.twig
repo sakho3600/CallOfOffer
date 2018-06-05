@@ -17,48 +17,53 @@
                          <th>
                              Commentaire
                          </th>
-                         <th colspan="2">
+                         <th>
                              Emmission
+                         </th>
+                         <th>
+                             Date prévue
                          </th>
                      </tr>
                      </thead>
                      <tbody>
-                 
+
                      {% for proposition in propositions %}
+                         {% if proposition.isAccepted == 0 and proposition.isRefused == 0 %}
+                             <tr class="tr_viwa_user">
+                                 <td class="col_provider">
+                                     {{ proposition.provider.username }}
 
+                                 </td>
 
-                         <tr class="tr_viwa_user">
-                             <td class="col_provider">
-                                 {{ proposition.provider.username }}
+                                 <td class="col_price">
+                                     {{ proposition.price }}
+                                 </td>
+                                 <td class="col_comment">
+                                     {{ proposition.comment }}
+                                 </td>
+                                 <td class="col_date">
+                                     {{ proposition.date |date('d-m-Y à H:i') }}
+                                 </td>
+                                 <td class="col_date">
+                                     {{ proposition.dateLivPrev |date('d-m-Y à H:i') }}
+                                 </td>
+                                 <td>
+                                     <div class="btn-choice-tab">
+                                         <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
+                                             <button class="btnRefuse btn-sm btn-danger" type="submit">
+                                                 Refuser
+                                             </button>
+                                         </a>
+                                         <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
+                                             <button class="btnAccept btn-sm btn-success" type="submit">
+                                                 Accepter
+                                             </button>
+                                         </a>
+                                     </div>
 
-                             </td>
-
-                             <td class="col_price">
-                                 {{ proposition.price }}
-                             </td>
-                             <td class="col_comment">
-                                 {{ proposition.comment }}
-                             </td>
-                             <td class="col_date">
-                                 {{ proposition.date |date('d-m-Y à H:i') }}
-                             </td>
-                             <td>
-                                 <div class="btn-choice-tab">
-                                     <a href="{{ path('vm_user_coo_refuse', {'id' : proposition.id }) }}">
-                                         <button class="btnRefuse btn-sm btn-danger" type="submit">
-                                             Refuser
-                                         </button>
-                                     </a>
-                                     <a href="{{ path('vm_user_coo_accept', {'id' : proposition.id }) }}">
-                                         <button class="btnAccept btn-sm btn-success" type="submit">
-                                             Accepter
-                                         </button>
-                                     </a>
-                                 </div>
-
-                             </td>
-                         </tr>
-
+                                 </td>
+                             </tr>
+                         {% endif %}
                      {% endfor %}
                      </tbody>
                  </table>

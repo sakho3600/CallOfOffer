@@ -14,8 +14,11 @@
                     <th>
                         Quantité
                     </th>
-                    <th colspan="2">
-                        Date
+                    <th>
+                        Date émission
+                    </th>
+                    <th>
+                        Date prévue
                     </th>
                 </tr>
                 </thead>
@@ -40,6 +43,8 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
+
+                    {{ dump(coo) }}
                     <tr class="tr_provider">
                         <td class="col_id">
                             {{ loop.index }}
@@ -57,6 +62,8 @@
                         </td>
                         <td class="col_date">
                             {{ coo.date|date('d-m-Y à H:i') }}
+                        </td><td class="col_datePrevu">
+                            {#{{ coo.proposition.dateLivPrev|date('d-m-Y à H:i') }}#}
                         </td>
                         <td>
                             <div class="btn-choice-tab">

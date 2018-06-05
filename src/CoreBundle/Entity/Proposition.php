@@ -53,6 +53,12 @@ class Proposition
     private $date;
 
     /**
+     * @ORM\Column(name="dateLivPrev", type="datetime",nullable=true)
+     */
+    private $dateLivPrev;
+
+
+    /**
      * @ORM\Column(name="isAccepted", type="boolean")
      */
     private $isAccepted;
@@ -278,5 +284,29 @@ class Proposition
     public function getResponseViwametal()
     {
         return $this->responseViwametal;
+    }
+
+    /**
+     * Set dateLivPrev
+     *
+     * @param \DateTime $dateLivPrev
+     *
+     * @return Proposition
+     */
+    public function setDateLivPrev($dateLivPrev)
+    {
+        $this->dateLivPrev = $dateLivPrev;
+
+        return $this;
+    }
+
+    /**
+     * Get dateLivPrev
+     *
+     * @return \DateTime
+     */
+    public function getDateLivPrev()
+    {
+        return $this->dateLivPrev;
     }
 }

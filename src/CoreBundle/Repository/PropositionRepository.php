@@ -85,4 +85,5 @@ class PropositionRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+
 }

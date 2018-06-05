@@ -34,9 +34,15 @@
 
             {% for coo in listCooInProgress %}
                 {% set cpt = 0 %}
+                {% set bestPrice = 999999999999 %}
                 {% for prop in propositions %}
                     {% if prop.callOfOffer.id == coo.id %}
-                        {% set cpt = cpt + 1 %}
+                        {% if prop.isRefused == 0 %}
+                            {% set cpt = cpt + 1 %}
+                            {% if prop.price < bestPrice %}
+                                {% set bestPrice = prop.price %}
+                            {% endif %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
 
@@ -61,7 +67,9 @@
                                 <a href="{{ path('vm_user_coo_see', {'id' : coo.id }) }}">
                                     <button name="del" class="btnResponse btn-sm btn-success" type="submit">
                                         Répondre ({{ cpt }} )
+                                        <span class="text-center">{{ bestPrice }}€</span>
                                     </button>
+
                                 </a>
 
                             {% else %}
@@ -69,6 +77,7 @@
                                     <button name="del" class="btnDelete btn-sm btn-danger" type="submit">
                                         Supprimer
                                     </button>
+
                                 </a>
                             {% endif %}
                         </div>

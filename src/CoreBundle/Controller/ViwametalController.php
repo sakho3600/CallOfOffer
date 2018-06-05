@@ -6,6 +6,7 @@ use CoreBundle\Entity\CallOfOffer;
 use CoreBundle\Entity\Proposition;
 use CoreBundle\Entity\Provider;
 use CoreBundle\Form\CallOfOfferType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -66,10 +67,7 @@ class ViwametalController extends Controller
         $repProp = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Proposition');
         $coo = $repProp->getCooByPropositionId($idProp);
         $prop = $repProp->find($idProp);
-//        $coo->setInProgress(false);
-//        $prop->setIsRefused(false);
-//        $prop->setIsAccepted(true);
-        $provider = $prop->getProvider(); //à dumper pour username
+        $provider = $prop->getProvider();
 
         $proposition = new Proposition();
         $proposition->setComment("");
@@ -101,9 +99,11 @@ class ViwametalController extends Controller
     {
         $idProp = $request->get('id');
         $serviceCoo = $this->get('corebundle.servicecallofoffer');
-        $propositionTag = $serviceCoo->getCooTagFromPropositionId($idProp)['tag'];
-        $providerUsername = $serviceCoo->getCooProviderUsernameFromPropositionId($idProp)['username'];
-        $coo = $serviceCoo->getCooFromPropositionId($idProp)->setInProgress(true);
+        $repProp = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Proposition');
+        $coo = $repProp->getCooByPropositionId($idProp);
+        $prop = $repProp->find($idProp);
+        $provider = $prop->getProvider();
+
         $proposition = new Proposition();
         $proposition->setComment("");
         $form = $this->createFormBuilder($proposition)
@@ -116,23 +116,15 @@ class ViwametalController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $request->get('form')['responseViwametal'];
             $proposition = $serviceCoo->refuseProposition($idProp, $comment);
-            return $this->render("@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig", [
-                'tag' => $propositionTag,
-                'title' => "Refus de la proposition  ",
-                'prov_username' => $providerUsername,
-                'refusal' => true,
-                'coo' => $coo
-            ]);
-
-
+            return $this->redirectToRoute('vm_user_index');
         } else {
 
             return $this->render('@Core/Display/Viwametal/Propositions/RefuseProposition.html.twig', [
                 'idProp' => $idProp,
                 'title' => "Refus de la proposition : ",
-                'tag' => $propositionTag,
+                'tag' => $coo->getTag(),
                 'form' => $form->createView(),
-                'prov_username' => $providerUsername
+                'prov_username' => $provider->getUsername()
             ]);
         }
     }
@@ -201,6 +193,25 @@ class ViwametalController extends Controller
         ]);
 
     }
+
+
+    public function statAction(){
+        $repProv = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Provider");
+        $providers = $repProv->findAll();
+        $repProp = $this->getDoctrine()->getManager()->getRepository("CoreBundle:Proposition");
+        $alPropositions = new ArrayCollection();
+        foreach ($providers as $prov){
+            $propositions = $repProp->getAllPropositionByProviderId($prov->getId());
+            $alPropositions[] = $propositions;
+        }
+        return $this->render('@Core/Display/Viwametal/Propositions/Statistiques.html.twig', [
+            'title' => 'Statistiques',
+            'prop' => $alPropositions,
+        ]);
+    }
+
+
+
 
     public function listCallsOfOffer($inProgress)
     {

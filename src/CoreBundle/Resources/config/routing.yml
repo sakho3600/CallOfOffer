@@ -10,6 +10,16 @@ provider_coo_consult:
     defaults:
         _controller: CoreBundle:Provider:consult
 
+provider_coo_consult_accepted:
+    path:  /provider/consult/accepted
+    defaults:
+        _controller: CoreBundle:Provider:consultAccepted
+
+provider_coo_consult_refused:
+    path:  /provider/consult/refused
+    defaults:
+        _controller: CoreBundle:Provider:consultRefused
+
 provider_offer_propose:
     path:    /provider/offer/propose
     defaults:
@@ -56,6 +66,12 @@ provider_management:
     path:  /vmuser/provider/add
     defaults:
         _controller: CoreBundle:Viwametal:addProvider
+
+
+vm_user_coo_stats:
+    path:   /vmuser/coo/stats
+    defaults:
+        _controller: CoreBundle:Viwametal:stat
 
 
 

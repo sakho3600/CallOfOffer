@@ -19,8 +19,14 @@
                     </button>
                 </a>
                 <span class="badge badge-primary notify">
+                    {% set nbNewProp = 0 %}
                     {% if propositions is defined %}
-                        {{ propositions | length }}
+                        {% for prop in propositions %}
+                            {% if prop.isAccepted == 0 and prop.isRefused == 0 %}
+                                {% set nbNewProp = nbNewProp + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        {{ nbNewProp }}
                     {% else %}
                         0
                     {% endif %}</span>

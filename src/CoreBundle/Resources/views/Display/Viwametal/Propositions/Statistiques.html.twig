@@ -1,0 +1,51 @@
+{% extends "@Core/Display/Viwametal/index.html.twig" %}
+ {% block propositions %}
+     {% if prop is defined %}
+
+         <div class="form_container">
+             <div class="table-responsive">
+
+                 <table id="table_viwa_user">
+                     <thead>
+                     <tr>
+                         <th>
+                             Fournisseur
+                         </th>
+                         <th>
+                             Nombre d'appel d'offre
+                         </th>
+                         <th>
+                             Total en €
+                         </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+
+                     {{ dump(prop) }}
+
+                     {% for proposition in prop %}
+                         {#{% if proposition.isAccepted == 0 and proposition.isRefused == 0 %}#}
+                             {#<tr class="tr_viwa_user">#}
+                                 {#<td class="col_provider">#}
+                                     {#{{ proposition.provider.username }}#}
+
+                                 {#</td>#}
+
+                                 {#<td class="col_nb_coo">#}
+                                     {#{{ proposition.price }}#}
+                                 {#</td>#}
+                                 {#<td class="col_tot">#}
+                                     {#{{ proposition.comment }}#}
+                                 {#</td>#}
+
+                             {#</tr>#}
+                         {#{% endif %}#}
+                     {% endfor %}
+                     </tbody>
+                 </table>
+
+             </div>
+         </div>
+
+     {% endif %}
+ {% endblock %}
